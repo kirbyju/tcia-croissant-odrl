@@ -1,0 +1,17 @@
+{
+  "mlcroissant_version": "1.1.0",
+  "full_prototype_files_checked": 289,
+  "full_prototype_validation_failures": 0,
+  "full_prototype_download_recordsets": 698,
+  "full_prototype_role_counts": {
+    "data_file": 338,
+    "manifest": 252,
+    "transfer_package": 101,
+    "metadata_only": 7
+  },
+  "notes": [
+    "The full generated corpus is not included in this share folder.",
+    "Example JSON-LD files are representative samples.",
+    "Manifest classification is based on TCIA download-requirements metadata, not file extension."
+  ]
+}

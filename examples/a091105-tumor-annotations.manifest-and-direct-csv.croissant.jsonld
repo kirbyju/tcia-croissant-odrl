@@ -1,0 +1,548 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "arrayShape": "cr:arrayShape",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "containedIn": "cr:containedIn",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "description": {
+      "@container": "@language"
+    },
+    "equivalentProperty": "cr:equivalentProperty",
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isArray": "cr:isArray",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "name": {
+      "@container": "@language"
+    },
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "samplingRate": "cr:samplingRate",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "sdVersion": "cr:sdVersion"
+  },
+  "@type": "sc:Dataset",
+  "@id": "https://doi.org/10.7937/T8RN-J447",
+  "conformsTo": "http://mlcommons.org/croissant/1.1",
+  "name": "Annotations for Sorafenib Tosylate in Treating Patients With Desmoid Tumors or Aggressive Fibromatosis",
+  "description": "This dataset contains image annotations derived from the NCI Clinical Trial \" Sorafenib Tosylate in Treating Patients With Desmoid Tumors or Aggressive Fibromatosis (A091105) \u201d. This dataset was generated as part of an NCI project to augment TCIA datasets with annotations that will improve their value for cancer researchers and AI developers. Annotation Protocol For each patient, all scans were reviewed to identify and annotate the clinically relevant time points and sequences/series. Scans were initially annotated by an international team of radiologists holding MBBS degrees or higher, which were then reviewed by US-based board-certified radiologists to ensure accuracy. In a typical patient all available time points were annotated. The following annotation rules were followed: RECIST 1.1 was otherwise generally followed for MR and CT imaging. A maximum of 5 lesions were annotated per patient scan (timepoint); no more than 2 per organ. The same 5 lesions were annotated at each time point. If the primary lesion was <1 cm it was still annotated. Three-dimensional segmentations of lesions were created in the axial plane. If no axial plane was available, lesions were annotated in the coronal plane. MRIs were annotated using the T1-weighted axial post contrast sequence, fat saturated if available. Occasionally, if the tumor was significantly better delineated on a STIR or T2 fat-sat sequence, it wase annotated on that sequence instead of the post contrast sequence. CTs were annotated using the axial post contrast series. If not available, the non contrast series was annotated. Lesions were labeled separately. The volume of each annotated lesion was calculated and reported in cubic centimeters [cc] in the Annotation Metadata CSV. Seed points were automatically generated, but reviewed by a radiologist. A \u201cnegative\u201d annotation was created for any exam without findings. At each time point: A seed point (kernel) was created for each segmented structure. The seed points for each segmentation are provided in a separate DICOM RTSTRUCT file. SNOMED-CT \u201cAnatomic Region Sequence\u201d and \u201cSegmented Property Category Code Sequence\u201d and codes were inserted for all segmented structures. \u201cTracking ID\u201d and \u201cTracking UID\u201d tags will be inserted for each segmented structure to enable longitudinal lesion tracking. Imaging time point codes were inserted to help identify each annotation in the context of the clinical trial assessment protocol. \u201cClinical Trial Time Point ID\u201d was used to encode time point type using one of the following strings as applicable: \u201cpre-dose\u201d or \u201cpost-chemotherapy\u201d. Content Item in \u201cAcquisition Context Sequence\u201d was added containing \"Time Point Type\" using Concept Code Sequence (0040,A168) selected from: (255235001, SCT, \u201cPre-dose\u201d) (262502001, SCT, \"Post-chemotherapy\") Important supplementary information and sample code A spreadsheet containing key details about the annotations is available in the Data Access section below.",
+  "url": "https://www.cancerimagingarchive.net/analysis-result/a091105-tumor-annotations/",
+  "creator": {
+    "@type": "Organization",
+    "name": "The Cancer Imaging Archive",
+    "url": "https://www.cancerimagingarchive.net/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Cancer Imaging Archive",
+    "url": "https://www.cancerimagingarchive.net/"
+  },
+  "license": [
+    "https://creativecommons.org/licenses/by/4.0/"
+  ],
+  "citeAs": "Rozenfeld, M., Jordan, P. (2023). Annotations for Sorafenib Tosylate in Treating Patients With Desmoid Tumors or Aggressive Fibromatosis (A091105-Tumor-Annotations) (Version 2) [dataset]. The Cancer Imaging Archive. https://doi.org/10.7937/t8rn-j447",
+  "keywords": [
+    "A091105-Tumor-Annotations",
+    "Analysis Result",
+    "Non-Cancer",
+    "Various",
+    "False"
+  ],
+  "sdPublisher": {
+    "@type": "Organization",
+    "name": "The Cancer Imaging Archive",
+    "url": "https://www.cancerimagingarchive.net/"
+  },
+  "sdVersion": "0.1.0",
+  "isLiveDataset": true,
+  "usageInfo": [
+    {
+      "@type": "CreativeWork",
+      "@id": "https://www.cancerimagingarchive.net/data-usage-policies-and-restrictions/",
+      "name": "TCIA Data Usage Policies and Restrictions",
+      "url": "https://www.cancerimagingarchive.net/data-usage-policies-and-restrictions/"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "file-46387",
+      "name": "A091105_Tumor-Annotations-manifest_2026-02-13.tcia",
+      "contentUrl": "https://www.cancerimagingarchive.net/wp-content/uploads/A091105_Tumor-Annotations-manifest_2026-02-13.tcia",
+      "encodingFormat": [
+        "text/plain",
+        "application/vnd.tcia.manifest"
+      ],
+      "usageInfo": [
+        {
+          "@type": "CreativeWork",
+          "@id": "https://www.cancerimagingarchive.net/data-usage-policies-and-restrictions/",
+          "name": "TCIA Data Usage Policies and Restrictions",
+          "url": "https://www.cancerimagingarchive.net/data-usage-policies-and-restrictions/"
+        },
+        {
+          "@type": "CreativeWork",
+          "@id": "https://creativecommons.org/licenses/by/4.0/",
+          "name": "CC BY 4.0",
+          "url": "https://creativecommons.org/licenses/by/4.0/"
+        }
+      ],
+      "contentSize": "264.91 MB",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "dateModified": "2026-02-13",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA download id",
+          "value": "46387"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA access level",
+          "value": "open"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA data types",
+          "value": [
+            "RTSTRUCT"
+          ]
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA file types",
+          "value": [
+            "DICOM"
+          ]
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA download artifact role",
+          "value": "manifest"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA access mechanism",
+          "value": "TCIA Data Retriever"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA download metadata",
+          "value": "https://www.cancerimagingarchive.net/wp-content/uploads/A091105_Tumor-Annotations-manifest_2026-02-13-nbia-digest.xlsx"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA download requirements",
+          "value": "Download requires the TCIA Data Retriever"
+        }
+      ]
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "file-46389",
+      "name": "Metadata_Report_A091105_2026_02_13.csv",
+      "contentUrl": "https://www.cancerimagingarchive.net/wp-content/uploads/Metadata_Report_A091105_2026_02_13.csv",
+      "encodingFormat": [
+        "text/csv"
+      ],
+      "usageInfo": [
+        {
+          "@type": "CreativeWork",
+          "@id": "https://www.cancerimagingarchive.net/data-usage-policies-and-restrictions/",
+          "name": "TCIA Data Usage Policies and Restrictions",
+          "url": "https://www.cancerimagingarchive.net/data-usage-policies-and-restrictions/"
+        },
+        {
+          "@type": "CreativeWork",
+          "@id": "https://creativecommons.org/licenses/by/4.0/",
+          "name": "CC BY 4.0",
+          "url": "https://creativecommons.org/licenses/by/4.0/"
+        }
+      ],
+      "contentSize": "1.2 MB",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "dateModified": "2026-02-13",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA download id",
+          "value": "46389"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA access level",
+          "value": "open"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA data types",
+          "value": [
+            "Measurement",
+            "Classification"
+          ]
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA file types",
+          "value": [
+            "CSV"
+          ]
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA download artifact role",
+          "value": "data file"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA access mechanism",
+          "value": "direct download"
+        }
+      ]
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "download-46387",
+      "name": "RTSTRUCT",
+      "description": "TCIA current download record 46387 for A091105-Tumor-Annotations.",
+      "dataType": "sc:DataDownload",
+      "key": {
+        "@id": "download-46387/download_id"
+      },
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "download-46387/download_id",
+          "dataType": "sc:Text"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46387/download_url",
+          "dataType": "sc:URL"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46387/file_object_id",
+          "dataType": "sc:Text"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46387/download_types",
+          "dataType": "sc:Text",
+          "isArray": true
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46387/data_types",
+          "dataType": "sc:Text",
+          "isArray": true
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46387/file_types",
+          "dataType": "sc:Text",
+          "isArray": true
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46387/download_artifact_role",
+          "dataType": "sc:Text"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46387/access_mechanism",
+          "dataType": "sc:Text"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46387/access_level",
+          "dataType": "sc:Text"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46387/license_label",
+          "dataType": "sc:Text"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46387/license_url",
+          "dataType": "sc:URL"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46387/subjects",
+          "dataType": "sc:Integer"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46387/studies",
+          "dataType": "sc:Integer"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46387/series",
+          "dataType": "sc:Integer"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46387/images",
+          "dataType": "sc:Integer"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46387/download_metadata",
+          "dataType": "sc:URL"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46387/download_requirements",
+          "dataType": "sc:Text"
+        }
+      ],
+      "data": [
+        {
+          "download-46387/download_id": "46387",
+          "download-46387/download_url": "https://www.cancerimagingarchive.net/wp-content/uploads/A091105_Tumor-Annotations-manifest_2026-02-13.tcia",
+          "download-46387/file_object_id": "file-46387",
+          "download-46387/download_types": [],
+          "download-46387/data_types": [
+            "RTSTRUCT"
+          ],
+          "download-46387/file_types": [
+            "DICOM"
+          ],
+          "download-46387/download_artifact_role": "manifest",
+          "download-46387/access_mechanism": "TCIA Data Retriever",
+          "download-46387/access_level": "open",
+          "download-46387/license_label": "CC BY 4.0",
+          "download-46387/license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "download-46387/subjects": 83,
+          "download-46387/studies": 1023,
+          "download-46387/series": 2445,
+          "download-46387/images": 2445,
+          "download-46387/download_metadata": "https://www.cancerimagingarchive.net/wp-content/uploads/A091105_Tumor-Annotations-manifest_2026-02-13-nbia-digest.xlsx",
+          "download-46387/download_requirements": "Download requires the TCIA Data Retriever"
+        }
+      ],
+      "usageInfo": [
+        {
+          "@type": "CreativeWork",
+          "@id": "https://www.cancerimagingarchive.net/data-usage-policies-and-restrictions/",
+          "name": "TCIA Data Usage Policies and Restrictions",
+          "url": "https://www.cancerimagingarchive.net/data-usage-policies-and-restrictions/"
+        },
+        {
+          "@type": "CreativeWork",
+          "@id": "https://creativecommons.org/licenses/by/4.0/",
+          "name": "CC BY 4.0",
+          "url": "https://creativecommons.org/licenses/by/4.0/"
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "download-46389",
+      "name": "Measurement; Classification",
+      "description": "TCIA current download record 46389 for A091105-Tumor-Annotations.",
+      "dataType": "sc:DataDownload",
+      "key": {
+        "@id": "download-46389/download_id"
+      },
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "download-46389/download_id",
+          "dataType": "sc:Text"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46389/download_url",
+          "dataType": "sc:URL"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46389/file_object_id",
+          "dataType": "sc:Text"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46389/download_types",
+          "dataType": "sc:Text",
+          "isArray": true
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46389/data_types",
+          "dataType": "sc:Text",
+          "isArray": true
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46389/file_types",
+          "dataType": "sc:Text",
+          "isArray": true
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46389/download_artifact_role",
+          "dataType": "sc:Text"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46389/access_mechanism",
+          "dataType": "sc:Text"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46389/access_level",
+          "dataType": "sc:Text"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46389/license_label",
+          "dataType": "sc:Text"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-46389/license_url",
+          "dataType": "sc:URL"
+        }
+      ],
+      "data": [
+        {
+          "download-46389/download_id": "46389",
+          "download-46389/download_url": "https://www.cancerimagingarchive.net/wp-content/uploads/Metadata_Report_A091105_2026_02_13.csv",
+          "download-46389/file_object_id": "file-46389",
+          "download-46389/download_types": [],
+          "download-46389/data_types": [
+            "Measurement",
+            "Classification"
+          ],
+          "download-46389/file_types": [
+            "CSV"
+          ],
+          "download-46389/download_artifact_role": "data file",
+          "download-46389/access_mechanism": "direct download",
+          "download-46389/access_level": "open",
+          "download-46389/license_label": "CC BY 4.0",
+          "download-46389/license_url": "https://creativecommons.org/licenses/by/4.0/"
+        }
+      ],
+      "usageInfo": [
+        {
+          "@type": "CreativeWork",
+          "@id": "https://www.cancerimagingarchive.net/data-usage-policies-and-restrictions/",
+          "name": "TCIA Data Usage Policies and Restrictions",
+          "url": "https://www.cancerimagingarchive.net/data-usage-policies-and-restrictions/"
+        },
+        {
+          "@type": "CreativeWork",
+          "@id": "https://creativecommons.org/licenses/by/4.0/",
+          "name": "CC BY 4.0",
+          "url": "https://creativecommons.org/licenses/by/4.0/"
+        }
+      ]
+    }
+  ],
+  "sameAs": [
+    "https://doi.org/10.7937/T8RN-J447"
+  ],
+  "identifier": [
+    {
+      "@type": "PropertyValue",
+      "name": "TCIA short title",
+      "value": "A091105-Tumor-Annotations"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "TCIA dataset type",
+      "value": "Analysis Result"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "DOI",
+      "value": "10.7937/T8RN-J447"
+    }
+  ],
+  "dateModified": "2026-02-13",
+  "datePublished": "2023-10-11",
+  "version": "2",
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Clark, K., Vendt, B., Smith, K., Freymann, J., Kirby, J., Koppel, P., Moore, S., Phillips, S., Maffitt, D., Pringle, M., Tarbox, L., & Prior, F. (2013). The Cancer Imaging Archive (TCIA): Maintaining and Operating a Public Information Repository . In Journal of Digital Imaging (Vol. 26, Issue 6, pp. 1045\u20131057). Springer Science and Business Media LLC. https://doi.org/10.1007/s10278-013-9622-7",
+      "identifier": "10.1007/s10278-013-9622-7",
+      "url": "https://doi.org/10.1007/s10278-013-9622-7"
+    }
+  ],
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "TCIA access level",
+      "value": "open"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "TCIA license status",
+      "value": "Open (Creative Commons)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "TCIA subjects",
+      "value": "83"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "TCIA program",
+      "value": "program_name: NCI Trials; related_collections: False; related_analysis_results: ACRIN-6685-TUMOR-ANNOTATIONS; AHEP0731-TUMOR-ANNOTATIONS; S0819-TUMOR-ANNOTATIONS; A091105-TUMOR-ANNOTATIONS; ARAR0331-TUMOR-ANNOTATIONS; EAY131-TUMOR-ANNOTATIONS"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Croissant generator",
+      "value": "tcia-croissant-prototype/0.1.0"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "TCIA snapshot schema version",
+      "value": "1"
+    }
+  ]
+}

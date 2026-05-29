@@ -1,0 +1,461 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "arrayShape": "cr:arrayShape",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "containedIn": "cr:containedIn",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "description": {
+      "@container": "@language"
+    },
+    "equivalentProperty": "cr:equivalentProperty",
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isArray": "cr:isArray",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "name": {
+      "@container": "@language"
+    },
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "samplingRate": "cr:samplingRate",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "sdVersion": "cr:sdVersion"
+  },
+  "@type": "sc:Dataset",
+  "@id": "https://doi.org/10.7937/0WF5-SJ50",
+  "conformsTo": "http://mlcommons.org/croissant/1.1",
+  "name": "Sorafenib Tosylate in Treating Patients With Desmoid Tumors or Aggressive Fibromatosis",
+  "description": "Demographic Summary of Available Imaging Characteristic Value (N = 83) Age at Enrollment (years) Mean \u00b1 SD: 38.8 \u00b1 13 Median (IQR): 36 (28-49.5) Range: 18-72 Sex Male: 25 (30%) Female: 58 (70%) Race White: 66 (80%) Black: 9 (11%) American Indian/Alaska Native: 1 (1%) Not Reported: 5 (6%) Unknown: 2 (2%) Ethnicity Not Available This collection contains data from the Alliance for Clinical Trials in Oncology Clinical Trial NCT02066181 \u201cSorafenib Tosylate in Treating Patients With Desmoid Tumors or Aggressive Fibromatosis\". Principal Investigator: Mrinal M Gounder. It was sponsored by NCI and performed by the Alliance for Clinical Trials in Oncology under study number A091105. This randomized phase III trial compares the effects, good and/or bad, of sorafenib tosylate in treating patients with desmoid tumors or aggressive fibromatosis. Sorafenib tosylate may stop the growth of tumor cells by blocking some of the proteins needed for cell growth. Select patient-level data from this trial is available via the following link: https://nctn-data-archive.nci.nih.gov/node/1266 . Trial Outcomes Results of the trial have been reported in the following publications: Mazza GL, Petersen MM, Ginos B, Langlais BT, Heon N, Gounder MM, Mahoney MR, Zoroufy AJ, Schwartz GK, Rogak LJ, Thanarajasingam G, Basch E, Dueck AC. Missing data strategies for the Patient-Reported Outcomes version of the Common Terminology Criteria for Adverse Events (PRO-CTCAE) in Alliance A091105 and COMET-2. Qual Life Res. 2022 Apr;31(4):1069-1080. doi: 10.1007/s11136-021-02968-1. Epub 2021 Aug 21. Erratum in: Qual Life Res. 2021 Oct 11. Basch E, Becker C, Rogak LJ, Schrag D, Reeve BB, Spears P, Smith ML, Gounder MM, Mahoney MR, Schwartz GK, Bennett AV, Mendoza TR, Cleeland CS, Sloan JA, Bruner DW, Schwab G, Atkinson TM, Thanarajasingam G, Bertagnolli MM, Dueck AC. Composite grading algorithm for the National Cancer Institute's Patient-Reported Outcomes version of the Common Terminology Criteria for Adverse Events (PRO-CTCAE). Clin Trials. 2021 Feb;18(1):104-114. doi: 10.1177/1740774520975120. Epub 2020 Dec 1. Gounder MM, Mahoney MR, Van Tine BA, Ravi V, Attia S, Deshpande HA, Gupta AA, Milhem MM, Conry RM, Movva S, Pishvaian MJ, Riedel RF, Sabagh T, Tap WD, Horvat N, Basch E, Schwartz LH, Maki RG, Agaram NP, Lefkowitz RA, Mazaheri Y, Yamashita R, Wright JJ, Dueck AC, Schwartz GK. Sorafenib for Advanced and Refractory Desmoid Tumors. N Engl J Med. 2018 Dec 20;379(25):2417-2428. doi: 10.1056/NEJMoa1805052.",
+  "url": "https://www.cancerimagingarchive.net/collection/a091105/",
+  "creator": {
+    "@type": "Organization",
+    "name": "The Cancer Imaging Archive",
+    "url": "https://www.cancerimagingarchive.net/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Cancer Imaging Archive",
+    "url": "https://www.cancerimagingarchive.net/"
+  },
+  "license": [
+    "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/"
+  ],
+  "citeAs": "Gounder, M. M., Mahoney, M. R., Van Tine, B. A., Ravi, V., Attia, S., Deshpande, H. A., Gupta, A. A., Milhem, M. M., Conry, R. M., Movva, S., Pishvaian, M. J., Riedel, R. F., Sabagh, T., Tap, W. D., Horvat, N., Basch, E., Schwartz, L. H., Maki, R. G., Agaram, N. P., \u2026 Schwartz, G. K. (2023). Sorafenib Tosylate in Treating Patients With Desmoid Tumors or Aggressive Fibromatosis (A091105) (Version 1) [Data set]. The Cancer Imaging Archive. https://doi.org/10.7937/0WF5-SJ50",
+  "keywords": [
+    "A091105",
+    "Collection",
+    "CT",
+    "MR",
+    "Non-Cancer",
+    "Various",
+    "Human"
+  ],
+  "sdPublisher": {
+    "@type": "Organization",
+    "name": "The Cancer Imaging Archive",
+    "url": "https://www.cancerimagingarchive.net/"
+  },
+  "sdVersion": "0.1.0",
+  "isLiveDataset": true,
+  "usageInfo": [
+    {
+      "@type": "CreativeWork",
+      "@id": "https://www.cancerimagingarchive.net/data-usage-policies-and-restrictions/",
+      "name": "TCIA Data Usage Policies and Restrictions",
+      "url": "https://www.cancerimagingarchive.net/data-usage-policies-and-restrictions/"
+    },
+    {
+      "@type": [
+        "CreativeWork",
+        "odrl:Offer"
+      ],
+      "@id": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/",
+      "name": "TCIA NIH Controlled Data Access Policy",
+      "url": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/",
+      "description": "Access requires authorization under the TCIA NIH Controlled Data Access Policy.",
+      "odrl:permission": {
+        "@type": "odrl:Permission",
+        "odrl:action": {
+          "@id": "odrl:use",
+          "name": "Use"
+        },
+        "odrl:duty": {
+          "@type": "odrl:Duty",
+          "odrl:action": {
+            "@id": "odrl:obtainConsent",
+            "name": "Obtain required access approval"
+          }
+        }
+      }
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "file-43619",
+      "name": "A091105-February-2023-manifest.tcia",
+      "contentUrl": "https://www.cancerimagingarchive.net/wp-content/uploads/A091105-February-2023-manifest.tcia",
+      "encodingFormat": [
+        "text/plain",
+        "application/vnd.tcia.manifest"
+      ],
+      "usageInfo": [
+        {
+          "@type": "CreativeWork",
+          "@id": "https://www.cancerimagingarchive.net/data-usage-policies-and-restrictions/",
+          "name": "TCIA Data Usage Policies and Restrictions",
+          "url": "https://www.cancerimagingarchive.net/data-usage-policies-and-restrictions/"
+        },
+        {
+          "@type": [
+            "CreativeWork",
+            "odrl:Offer"
+          ],
+          "@id": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/",
+          "name": "TCIA NIH Controlled Data Access Policy",
+          "url": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/",
+          "description": "Access requires authorization under the TCIA NIH Controlled Data Access Policy.",
+          "odrl:permission": {
+            "@type": "odrl:Permission",
+            "odrl:action": {
+              "@id": "odrl:use",
+              "name": "Use"
+            },
+            "odrl:duty": {
+              "@type": "odrl:Duty",
+              "odrl:action": {
+                "@id": "odrl:obtainConsent",
+                "name": "Obtain required access approval"
+              }
+            }
+          }
+        },
+        {
+          "@type": "CreativeWork",
+          "@id": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/",
+          "name": "NIH Controlled Data Access Policy",
+          "url": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/"
+        }
+      ],
+      "contentSize": "278.97 GB",
+      "license": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/",
+      "dateModified": "2023-11-20",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA download id",
+          "value": "43619"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA access level",
+          "value": "controlled"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA download types",
+          "value": [
+            "Radiology Images"
+          ]
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA data types",
+          "value": [
+            "MR",
+            "CT"
+          ]
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA file types",
+          "value": [
+            "DICOM"
+          ]
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA download artifact role",
+          "value": "manifest"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA access mechanism",
+          "value": "TCIA Data Retriever"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA download requirements",
+          "value": "Download requires the TCIA Data Retriever"
+        }
+      ]
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "download-43619",
+      "name": "Radiology Images",
+      "description": "TCIA current download record 43619 for A091105.",
+      "dataType": "sc:DataDownload",
+      "key": {
+        "@id": "download-43619/download_id"
+      },
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "download-43619/download_id",
+          "dataType": "sc:Text"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-43619/download_url",
+          "dataType": "sc:URL"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-43619/file_object_id",
+          "dataType": "sc:Text"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-43619/download_types",
+          "dataType": "sc:Text",
+          "isArray": true
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-43619/data_types",
+          "dataType": "sc:Text",
+          "isArray": true
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-43619/file_types",
+          "dataType": "sc:Text",
+          "isArray": true
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-43619/download_artifact_role",
+          "dataType": "sc:Text"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-43619/access_mechanism",
+          "dataType": "sc:Text"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-43619/access_level",
+          "dataType": "sc:Text"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-43619/license_label",
+          "dataType": "sc:Text"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-43619/license_url",
+          "dataType": "sc:URL"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-43619/subjects",
+          "dataType": "sc:Integer"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-43619/studies",
+          "dataType": "sc:Integer"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-43619/series",
+          "dataType": "sc:Integer"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-43619/images",
+          "dataType": "sc:Integer"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-43619/download_requirements",
+          "dataType": "sc:Text"
+        }
+      ],
+      "data": [
+        {
+          "download-43619/download_id": "43619",
+          "download-43619/download_url": "https://www.cancerimagingarchive.net/wp-content/uploads/A091105-February-2023-manifest.tcia",
+          "download-43619/file_object_id": "file-43619",
+          "download-43619/download_types": [
+            "Radiology Images"
+          ],
+          "download-43619/data_types": [
+            "MR",
+            "CT"
+          ],
+          "download-43619/file_types": [
+            "DICOM"
+          ],
+          "download-43619/download_artifact_role": "manifest",
+          "download-43619/access_mechanism": "TCIA Data Retriever",
+          "download-43619/access_level": "controlled",
+          "download-43619/license_label": "NIH Controlled Data Access Policy",
+          "download-43619/license_url": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/",
+          "download-43619/subjects": 83,
+          "download-43619/studies": 1140,
+          "download-43619/series": 11977,
+          "download-43619/images": 722626,
+          "download-43619/download_requirements": "Download requires the TCIA Data Retriever"
+        }
+      ],
+      "usageInfo": [
+        {
+          "@type": "CreativeWork",
+          "@id": "https://www.cancerimagingarchive.net/data-usage-policies-and-restrictions/",
+          "name": "TCIA Data Usage Policies and Restrictions",
+          "url": "https://www.cancerimagingarchive.net/data-usage-policies-and-restrictions/"
+        },
+        {
+          "@type": [
+            "CreativeWork",
+            "odrl:Offer"
+          ],
+          "@id": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/",
+          "name": "TCIA NIH Controlled Data Access Policy",
+          "url": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/",
+          "description": "Access requires authorization under the TCIA NIH Controlled Data Access Policy.",
+          "odrl:permission": {
+            "@type": "odrl:Permission",
+            "odrl:action": {
+              "@id": "odrl:use",
+              "name": "Use"
+            },
+            "odrl:duty": {
+              "@type": "odrl:Duty",
+              "odrl:action": {
+                "@id": "odrl:obtainConsent",
+                "name": "Obtain required access approval"
+              }
+            }
+          }
+        },
+        {
+          "@type": "CreativeWork",
+          "@id": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/",
+          "name": "NIH Controlled Data Access Policy",
+          "url": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/"
+        }
+      ]
+    }
+  ],
+  "sameAs": [
+    "https://doi.org/10.7937/0WF5-SJ50"
+  ],
+  "identifier": [
+    {
+      "@type": "PropertyValue",
+      "name": "TCIA short title",
+      "value": "A091105"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "TCIA dataset type",
+      "value": "Collection"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "DOI",
+      "value": "10.7937/0WF5-SJ50"
+    }
+  ],
+  "dateModified": "2023-02-10",
+  "datePublished": "2023-01-18",
+  "version": "1",
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Gounder, M. M., Mahoney, M. R., Van Tine, B. A., Ravi, V., Attia, S., Deshpande, H. A., Gupta, A. A., Milhem, M. M., Conry, R. M., Movva, S., Pishvaian, M. J., Riedel, R. F., Sabagh, T., Tap, W. D., Horvat, N., Basch, E., Schwartz, L. H., Maki, R. G., Agaram, N. P., \u2026 Schwartz, G. K. (2018). Sorafenib for Advanced and Refractory Desmoid Tumors. In New England Journal of Medicine (Vol. 379, Issue 25, pp. 2417\u20132428). Massachusetts Medical Society . https://doi.org/10.1056/nejmoa1805052",
+      "identifier": "10.1056/nejmoa1805052",
+      "url": "https://doi.org/10.1056/nejmoa1805052"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Clark, K., Vendt, B., Smith, K., Freymann, J., Kirby, J., Koppel, P., Moore, S., Phillips, S., Maffitt, D., Pringle, M., Tarbox, L., & Prior, F. (2013). The Cancer Imaging Archive (TCIA): Maintaining and Operating a Public Information Repository . In Journal of Digital Imaging (Vol. 26, Issue 6, pp. 1045\u20131057). Springer Science and Business Media LLC. https://doi.org/10.1007/s10278-013-9622-7",
+      "identifier": "10.1007/s10278-013-9622-7",
+      "url": "https://doi.org/10.1007/s10278-013-9622-7"
+    }
+  ],
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "TCIA access level",
+      "value": "controlled"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "TCIA license status",
+      "value": "Controlled"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "TCIA subjects",
+      "value": "83"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "TCIA program",
+      "value": "program_name: NCTN; related_collections: A091105; ACNS0332; AHEP0731; AHOD0831; ARAR0331; AREN0532; AREN0533; AREN0534; CALGB50303; EA1141; S0819; ACRIN-6698; ACRIN-CONTRALATERAL-BREAST-MR; ACRIN-DSC-MR-BRAIN; ACRIN-FLT-BREAST; ACRIN-FMISO-BRAIN; ACRIN-HNSCC-FDG-PET-CT; ACRIN-NSCLC-FDG-PET; CT COLONOGRAPHY; HEAD-NECK-CETUXIMAB; ISPY1; ISPY2; NRG-1308; NSCLC-CETUXIMAB; EAY131; related_analysis_results: CALGB50303-TUMOR-ANNOTATIONS; AHOD0831-TUMOR-ANNOTATIONS; AREN0532-TUMOR-ANNOTATIONS; AREN0534-TUMOR-ANNOTATIONS; AREN0533-TUMOR-ANNOTATIONS; ACNS0332-TUMOR-ANNOTATIONS"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Croissant generator",
+      "value": "tcia-croissant-prototype/0.1.0"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "TCIA snapshot schema version",
+      "value": "1"
+    }
+  ]
+}
