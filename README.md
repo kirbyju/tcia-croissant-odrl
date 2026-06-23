@@ -12,6 +12,7 @@ imaging payloads directly importable through `mlcroissant`.
 
 ```text
 docs/prototype-developer-notes.md
+docs/website-integration-recommendations.md
 scripts/generate_tcia_croissant.py
 examples/*.croissant.jsonld
 examples/validation-summary.json
@@ -19,8 +20,10 @@ requirements.txt
 ```
 
 The example Croissant files are representative samples only. They illustrate
-open, controlled, mixed-access, noncommercial, Data Retriever manifest, direct
-CSV, and Aspera-style transfer-package cases.
+five important TCIA edge cases: public DICOM routed through IDC, controlled
+access routed through CTDC, noncommercial licensing, mixed access routed through
+General Commons, and an Analysis Result with NIfTI segmentations derived from
+source image collections with mixed access and licensing.
 
 ## What Is Not Included
 
@@ -61,6 +64,19 @@ TCIA download rows can point to different kinds of linked artifacts:
 This role is based on TCIA's download-requirements helper metadata, not file
 extension. CSV files can be either ordinary data files or Data Retriever
 manifests.
+
+Many TCIA rows also have a separate search or browse button. The prototype keeps
+that distinct from the download artifact:
+
+- `download_url` / `contentUrl` is the downloadable file, manifest, or transfer
+  handoff.
+- `search_url` is the web interface used to inspect, search, or preview the
+  row before downloading.
+- `search_system` names that interface, such as NBIA Search, PathDB, CTDC, or
+  General Commons.
+
+Those search pages are useful machine-readable access metadata, but they are not
+modeled as Croissant `FileObject` payloads.
 
 ## Generate Croissant From A Snapshot
 
@@ -123,6 +139,12 @@ PY
 See [docs/prototype-developer-notes.md](docs/prototype-developer-notes.md) for
 the design rationale, standards strategy, mapping details, and production
 questions for TCIA developers.
+
+See
+[docs/website-integration-recommendations.md](docs/website-integration-recommendations.md)
+for recommendations on updating TCIA dataset page Schema.org JSON-LD, linking
+Croissant files from HTML, introducing reusable ODRL policies, and connecting
+stable Croissant URLs back to DataCite DOI records.
 
 ## Licensing
 

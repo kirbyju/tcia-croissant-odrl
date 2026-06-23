@@ -61,6 +61,7 @@
   "@id": "https://doi.org/10.7937/K9/TCIA.2016.ELN8YGLE",
   "conformsTo": "http://mlcommons.org/croissant/1.1",
   "name": "Data from 4D Lung Imaging of NSCLC Patients",
+  "alternateName": "4D-Lung",
   "description": "This data collection consists of images acquired during chemoradiotherapy of 20 locally-advanced, non-small cell lung cancer patients. The images include four-dimensional (4D) fan beam (4D-FBCT) and 4D cone beam CT (4D-CBCT). All patients underwent concurrent radiochemotherapy to a total dose of 64.8-70 Gy using daily 1.8 or 2 Gy fractions. 4D-FBCT images were acquired on a 16-slice helical CT scanner (Brilliance Big Bore, Philips Medical Systems, Andover, MA) as respiration-correlated CTs with 10 breathing phases (0 to 90%, phase-based binning) and 3 mm slice thickness. 4D-FBCT images were acquired during simulation, prior to therapy, and used for therapy planning. In 14 of the 20 subjects, 4D-FBCTs were also acquired on the same scanner weekly during therapy. 4D-CBCT images were acquired on a commercial CBCT scanner (On-Board Imager\u2122, Varian Medical Systems, Inc.). An external surrogate (Real-time Position Management, Varian Medical Systems, Inc.) was integrated into the CBCT acquisition system to stamp each CBCT projection with the surrogate respiratory signal through in-house software and hardware tools. Approximately 2500 projections were acquired over a period of 8-10 minutes in half-fan mode with half bow-tie filter. The technique was 125 kVp, 20 mA, and 20 ms in a single 360\u00b0 slow gantry arc. Using the external surrogate, the CBCT projections were sorted into 10 breathing phases (0 to 90%, phase-based binning) and reconstructed with an in-house FDK reconstruction algorithm. Audio-visual biofeedback was performed for all 4D-FBCT and 4D-CBCT acquisitions in all subjects. A single Radiation Oncologist delineated targets and organs at risk in all 4D-FBCT and a limited number of 4D-CBCT images, on all 10 phases per scan. Seven of the subjects had gold coils implanted as fiducial markers in or near the tumor. The dataset is most fully described in detail in Balik et al. 1 Seven of the subjects had gold coils implanted as fiducial markers in or near the tumor. The implantation procedure and details of marker location are described in detail in Roman et al. 2 References 1 S. Balik et al., \u201cEvaluation of 4-Dimensional Computed Tomography to 4-Dimensional Cone-Beam Computed Tomography Deformable Image Registration for Lung Cancer Adaptive Radiation Therapy.\u201d Int. J. Radiat. Oncol. Biol. Phys. 86 , 372\u20139 (2013) PMCID: PMC3647023. 2 N.O. Roman, W. Shepherd, N. Mukhopadhyay, G.D. Hugo, and E. Weiss, \u201cInterfractional Positional Variability of Fiducial Markers and Primary Tumors in Locally Advanced Non-Small-Cell Lung Cancer during Audiovisual Biofeedback Radiotherapy.\u201d Int. J. Radiat. Oncol. Biol. Phys. 83 , 1566\u201372 (2012).",
   "url": "https://www.cancerimagingarchive.net/collection/4d-lung/",
   "creator": {
@@ -72,6 +73,17 @@
     "@type": "Organization",
     "name": "The Cancer Imaging Archive",
     "url": "https://www.cancerimagingarchive.net/"
+  },
+  "includedInDataCatalog": {
+    "@type": "DataCatalog",
+    "@id": "https://www.cancerimagingarchive.net/#catalog",
+    "name": "The Cancer Imaging Archive",
+    "url": "https://www.cancerimagingarchive.net/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "The Cancer Imaging Archive",
+      "url": "https://www.cancerimagingarchive.net/"
+    }
   },
   "license": [
     "https://creativecommons.org/licenses/by/3.0/"
@@ -93,6 +105,7 @@
   },
   "sdVersion": "0.1.0",
   "isLiveDataset": true,
+  "conditionsOfAccess": "Open-access TCIA data. Users must follow the listed license and TCIA Data Usage Policies and Restrictions.",
   "usageInfo": [
     {
       "@type": "CreativeWork",
@@ -111,6 +124,7 @@
         "text/plain",
         "application/vnd.tcia.manifest"
       ],
+      "conditionsOfAccess": "Open-access TCIA data. Users must follow the listed license and TCIA Data Usage Policies and Restrictions.",
       "usageInfo": [
         {
           "@type": "CreativeWork",
@@ -173,6 +187,21 @@
         },
         {
           "@type": "PropertyValue",
+          "name": "TCIA downstream access system",
+          "value": "Imaging Data Commons (IDC)"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA search system",
+          "value": "NBIA Search"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA search/access URL",
+          "value": "https://nbia.cancerimagingarchive.net/nbia-search/?CollectionCriteria=4D-Lung"
+        },
+        {
+          "@type": "PropertyValue",
           "name": "TCIA download metadata",
           "value": "https://www.cancerimagingarchive.net/wp-content/uploads/doiJNLP-Y71kLpdQ-nbia-digest.xlsx"
         },
@@ -207,6 +236,11 @@
         },
         {
           "@type": "cr:Field",
+          "@id": "download-42107/search_url",
+          "dataType": "sc:URL"
+        },
+        {
+          "@type": "cr:Field",
           "@id": "download-42107/file_object_id",
           "dataType": "sc:Text"
         },
@@ -236,6 +270,16 @@
         {
           "@type": "cr:Field",
           "@id": "download-42107/access_mechanism",
+          "dataType": "sc:Text"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-42107/downstream_access_system",
+          "dataType": "sc:Text"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-42107/search_system",
           "dataType": "sc:Text"
         },
         {
@@ -288,6 +332,7 @@
         {
           "download-42107/download_id": "42107",
           "download-42107/download_url": "https://www.cancerimagingarchive.net/wp-content/uploads/doiJNLP-Y71kLpdQ.tcia",
+          "download-42107/search_url": "https://nbia.cancerimagingarchive.net/nbia-search/?CollectionCriteria=4D-Lung",
           "download-42107/file_object_id": "file-42107",
           "download-42107/download_types": [
             "Radiology Images"
@@ -301,6 +346,8 @@
           ],
           "download-42107/download_artifact_role": "manifest",
           "download-42107/access_mechanism": "TCIA Data Retriever",
+          "download-42107/downstream_access_system": "Imaging Data Commons (IDC)",
+          "download-42107/search_system": "NBIA Search",
           "download-42107/access_level": "open",
           "download-42107/license_label": "CC BY 3.0",
           "download-42107/license_url": "https://creativecommons.org/licenses/by/3.0/",
@@ -312,6 +359,7 @@
           "download-42107/download_requirements": "Download requires the TCIA Data Retriever"
         }
       ],
+      "conditionsOfAccess": "Open-access TCIA data. Users must follow the listed license and TCIA Data Usage Policies and Restrictions.",
       "usageInfo": [
         {
           "@type": "CreativeWork",
@@ -400,13 +448,39 @@
     },
     {
       "@type": "PropertyValue",
+      "name": "TCIA downstream access systems",
+      "value": [
+        "Imaging Data Commons (IDC)"
+      ]
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "TCIA search systems",
+      "value": [
+        "NBIA Search"
+      ]
+    },
+    {
+      "@type": "PropertyValue",
       "name": "Croissant generator",
       "value": "tcia-croissant-prototype/0.1.0"
     },
     {
       "@type": "PropertyValue",
       "name": "TCIA snapshot schema version",
-      "value": "1"
+      "value": "5"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "TCIA external resources",
+      "value": [
+        "Image Analyses"
+      ]
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "TCIA has TCIA clinical download",
+      "value": false
     }
   ]
 }

@@ -3,15 +3,27 @@
   "full_prototype_files_checked": 289,
   "full_prototype_validation_failures": 0,
   "full_prototype_download_recordsets": 698,
+  "full_prototype_zip_sha256": "09de814954492972da03b77e069297f1f7fa161cfb17d72c5ec4f789461134b1",
   "full_prototype_role_counts": {
-    "data_file": 338,
+    "data_file": 337,
     "manifest": 252,
-    "transfer_package": 101,
+    "transfer_package": 102,
     "metadata_only": 7
+  },
+  "example_files_checked": 5,
+  "example_validation_failures": 0,
+  "curated_examples": {
+    "4d-lung.open-manifest.croissant.jsonld": "Public DICOM with IDC downstream storage/access route.",
+    "cmb-aml.radiology-pathology-external-clinical.croissant.jsonld": "Controlled CTDC radiology manifest, open radiology manifest, Aspera pathology package, PathDB pathology search URL, and external clinical-resource signal.",
+    "breast-cancer-screening-dbt.noncommercial.croissant.jsonld": "Noncommercial license edge case.",
+    "hnscc.mixed-access.croissant.jsonld": "Mixed access with controlled DICOM manifests routed through General Commons.",
+    "saros.analysis-result-nifti-derived.croissant.jsonld": "Analysis Result with open NIfTI segmentations and mixed-access source image context."
   },
   "notes": [
     "The full generated corpus is not included in this share folder.",
     "Example JSON-LD files are representative samples.",
-    "Manifest classification is based on TCIA download-requirements metadata, not file extension."
+    "A091105 examples are intentionally excluded because that dataset is currently offline pending CTDC migration.",
+    "Manifest classification is based on TCIA download-requirements metadata, not file extension.",
+    "Schema.org catalog, conditionsOfAccess, search system, and Analysis Result source-context fields are included to support website integration guidance."
   ]
 }

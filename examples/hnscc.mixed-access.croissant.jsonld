@@ -61,6 +61,7 @@
   "@id": "https://doi.org/10.7937/k9/tcia.2020.a8sh-7363",
   "conformsTo": "http://mlcommons.org/croissant/1.1",
   "name": "HNSCC",
+  "alternateName": "HNSCC",
   "description": "This collection contains imaging, radiation therapy, and clinical data from 627 head and neck squamous cell carcinoma (HNSCC) patients at MD Anderson Cancer Center. Researchers at MDACC analyzed these patients' data as part of two separate research projects. 70 of the patients were selected for inclusion in both projects. This collection provides access to all data for the full set of patients involved in both projects. Download options for the individual studies are available by following the links in each project description below. The first project: Head-Neck-CT-Atlas The first project screened 2840 consecutive patients with HNSCC treated with curative-intent RT at MD Anderson Cancer Center from 2003 to 2013. Patients with whole-body PET-CT or abdominal CT scans both before and after RT (n=215) were selected for the cohort. De-identified diagnostic imaging, radiation treatment planning, and follow up imaging are provided. Using cross sectional imaging, total body skeletal muscle and adipose content were calculated before and after treatment. All imaging data are subject- and date-matched to clinical data from each patient, including demographics, risk factors, grade, stage, recurrence, and survival. Open access to these data allows for inter-institutional comparisons of complete RT details in non-randomized patient populations, allowing for a more granular understanding of three dimensional factors that influence treatment effectiveness and toxicity sparing. More information about this study and links to download the corresponding patient subset of this collection including clinical data can be found in the \"Head-Neck-CT-Atlas\" dataset. The second project: Radiomics outcome prediction in Oropharyngeal cancer The second project was intended to address the unmet need for integrating quantitative imaging biomarkers into current risk stratification tools and to explore the correlation between radiomics features \u2013alone or in combination with clinical prognosticators- and tumor outcome. Clinical meta-data and matched baseline contrast-enhanced computed tomography (CECT) scans were used to build a cohort of 495 oropharyngeal cancer (OPC) patients treated between 2005 and 2012. Expert radiation oncologists manually segmented primary and nodal disease gross volumes (GTVp & GTVn). Structures were named per the American Association of Physicists in Medicine (AAPM) TG-263 recommendations, then retrieved in RT-STRUCT format. Matched patient, disease, treatment and outcomes data were obtained. Radiomics analysis was performed using an open-source institutionally-developed software that runs on Matlab platform. More information about this study and links to download the corresponding patient subset of this collection including clinical data can be found in the \" Radiomics outcome prediction in Oropharyngeal cancer \" dataset.",
   "url": "https://www.cancerimagingarchive.net/collection/hnscc/",
   "creator": {
@@ -72,6 +73,17 @@
     "@type": "Organization",
     "name": "The Cancer Imaging Archive",
     "url": "https://www.cancerimagingarchive.net/"
+  },
+  "includedInDataCatalog": {
+    "@type": "DataCatalog",
+    "@id": "https://www.cancerimagingarchive.net/#catalog",
+    "name": "The Cancer Imaging Archive",
+    "url": "https://www.cancerimagingarchive.net/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "The Cancer Imaging Archive",
+      "url": "https://www.cancerimagingarchive.net/"
+    }
   },
   "license": [
     "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/",
@@ -89,7 +101,7 @@
     "RTPLAN",
     "RTDOSE",
     "Head and Neck Squamous Cell Carcinoma",
-    "Head-Neck",
+    "Head-and-Neck",
     "Human"
   ],
   "sdPublisher": {
@@ -99,6 +111,7 @@
   },
   "sdVersion": "0.1.0",
   "isLiveDataset": true,
+  "conditionsOfAccess": "Mixed open and controlled access. Review each TCIA download row for its license, access mechanism, and controlled-access requirements.",
   "usageInfo": [
     {
       "@type": "CreativeWork",
@@ -116,6 +129,7 @@
       "encodingFormat": [
         "text/csv"
       ],
+      "conditionsOfAccess": "Controlled-access TCIA data. Users must obtain authorization and follow the TCIA NIH Controlled Data Access Policy before accessing this row.",
       "usageInfo": [
         {
           "@type": "CreativeWork",
@@ -206,6 +220,21 @@
         },
         {
           "@type": "PropertyValue",
+          "name": "TCIA downstream access system",
+          "value": "General Commons"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA search system",
+          "value": "General Commons"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA search/access URL",
+          "value": "https://general.datacommons.cancer.gov/#/data/%7B%22studies%22%3A%5B%22HNSCC%22%5D%2C%22upload%22%3A%5B%5D%2C%22autocomplete%22%3A%5B%5D%2C%22uploadMetadata%22%3A%7B%7D%7D"
+        },
+        {
+          "@type": "PropertyValue",
           "name": "TCIA download metadata",
           "value": "https://www.cancerimagingarchive.net/wp-content/uploads/HNSCC-nbia-digest.xlsx"
         },
@@ -224,6 +253,7 @@
       "encodingFormat": [
         "text/csv"
       ],
+      "conditionsOfAccess": "Controlled-access TCIA data. Users must obtain authorization and follow the TCIA NIH Controlled Data Access Policy before accessing this row.",
       "usageInfo": [
         {
           "@type": "CreativeWork",
@@ -314,6 +344,11 @@
         },
         {
           "@type": "PropertyValue",
+          "name": "TCIA downstream access system",
+          "value": "General Commons"
+        },
+        {
+          "@type": "PropertyValue",
           "name": "TCIA download metadata",
           "value": "https://www.cancerimagingarchive.net/wp-content/uploads/HNSCC-doiJNLP-Lwi93B55-nbia-digest.xlsx"
         },
@@ -332,6 +367,7 @@
       "encodingFormat": [
         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
       ],
+      "conditionsOfAccess": "Open-access TCIA data. Users must follow the listed license and TCIA Data Usage Policies and Restrictions.",
       "usageInfo": [
         {
           "@type": "CreativeWork",
@@ -403,6 +439,7 @@
       "encodingFormat": [
         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
       ],
+      "conditionsOfAccess": "Open-access TCIA data. Users must follow the listed license and TCIA Data Usage Policies and Restrictions.",
       "usageInfo": [
         {
           "@type": "CreativeWork",
@@ -472,6 +509,7 @@
       "encodingFormat": [
         "text/csv"
       ],
+      "conditionsOfAccess": "Controlled-access TCIA data. Users must obtain authorization and follow the TCIA NIH Controlled Data Access Policy before accessing this row.",
       "usageInfo": [
         {
           "@type": "CreativeWork",
@@ -558,6 +596,11 @@
         },
         {
           "@type": "PropertyValue",
+          "name": "TCIA downstream access system",
+          "value": "General Commons"
+        },
+        {
+          "@type": "PropertyValue",
           "name": "TCIA download metadata",
           "value": "https://www.cancerimagingarchive.net/wp-content/uploads/manifest-1585330520084-nbia-digest.xlsx"
         },
@@ -576,6 +619,7 @@
       "encodingFormat": [
         "text/csv"
       ],
+      "conditionsOfAccess": "Open-access TCIA data. Users must follow the listed license and TCIA Data Usage Policies and Restrictions.",
       "usageInfo": [
         {
           "@type": "CreativeWork",
@@ -665,6 +709,11 @@
         },
         {
           "@type": "cr:Field",
+          "@id": "download-42477/search_url",
+          "dataType": "sc:URL"
+        },
+        {
+          "@type": "cr:Field",
           "@id": "download-42477/file_object_id",
           "dataType": "sc:Text"
         },
@@ -694,6 +743,16 @@
         {
           "@type": "cr:Field",
           "@id": "download-42477/access_mechanism",
+          "dataType": "sc:Text"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-42477/downstream_access_system",
+          "dataType": "sc:Text"
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "download-42477/search_system",
           "dataType": "sc:Text"
         },
         {
@@ -746,6 +805,7 @@
         {
           "download-42477/download_id": "42477",
           "download-42477/download_url": "https://www.cancerimagingarchive.net/wp-content/uploads/GC_manifest_HNSCC_20260326.csv",
+          "download-42477/search_url": "https://general.datacommons.cancer.gov/#/data/%7B%22studies%22%3A%5B%22HNSCC%22%5D%2C%22upload%22%3A%5B%5D%2C%22autocomplete%22%3A%5B%5D%2C%22uploadMetadata%22%3A%7B%7D%7D",
           "download-42477/file_object_id": "file-42477",
           "download-42477/download_types": [
             "Radiology Images"
@@ -763,6 +823,8 @@
           ],
           "download-42477/download_artifact_role": "manifest",
           "download-42477/access_mechanism": "TCIA Data Retriever",
+          "download-42477/downstream_access_system": "General Commons",
+          "download-42477/search_system": "General Commons",
           "download-42477/access_level": "controlled",
           "download-42477/license_label": "NIH Controlled Data Access Policy",
           "download-42477/license_url": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/",
@@ -774,6 +836,7 @@
           "download-42477/download_requirements": "Download requires the TCIA Data Retriever"
         }
       ],
+      "conditionsOfAccess": "Controlled-access TCIA data. Users must obtain authorization and follow the TCIA NIH Controlled Data Access Policy before accessing this row.",
       "usageInfo": [
         {
           "@type": "CreativeWork",
@@ -868,6 +931,11 @@
         },
         {
           "@type": "cr:Field",
+          "@id": "download-45821/downstream_access_system",
+          "dataType": "sc:Text"
+        },
+        {
+          "@type": "cr:Field",
           "@id": "download-45821/access_level",
           "dataType": "sc:Text"
         },
@@ -933,6 +1001,7 @@
           ],
           "download-45821/download_artifact_role": "manifest",
           "download-45821/access_mechanism": "TCIA Data Retriever",
+          "download-45821/downstream_access_system": "General Commons",
           "download-45821/access_level": "controlled",
           "download-45821/license_label": "NIH Controlled Data Access Policy",
           "download-45821/license_url": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/",
@@ -944,6 +1013,7 @@
           "download-45821/download_requirements": "Download requires the TCIA Data Retriever"
         }
       ],
+      "conditionsOfAccess": "Controlled-access TCIA data. Users must obtain authorization and follow the TCIA NIH Controlled Data Access Policy before accessing this row.",
       "usageInfo": [
         {
           "@type": "CreativeWork",
@@ -1081,6 +1151,7 @@
           "download-45823/subjects": 215
         }
       ],
+      "conditionsOfAccess": "Open-access TCIA data. Users must follow the listed license and TCIA Data Usage Policies and Restrictions.",
       "usageInfo": [
         {
           "@type": "CreativeWork",
@@ -1186,6 +1257,7 @@
           "download-45825/license_url": "https://creativecommons.org/licenses/by/3.0/"
         }
       ],
+      "conditionsOfAccess": "Open-access TCIA data. Users must follow the listed license and TCIA Data Usage Policies and Restrictions.",
       "usageInfo": [
         {
           "@type": "CreativeWork",
@@ -1256,6 +1328,11 @@
         },
         {
           "@type": "cr:Field",
+          "@id": "download-45785/downstream_access_system",
+          "dataType": "sc:Text"
+        },
+        {
+          "@type": "cr:Field",
           "@id": "download-45785/access_level",
           "dataType": "sc:Text"
         },
@@ -1317,6 +1394,7 @@
           ],
           "download-45785/download_artifact_role": "manifest",
           "download-45785/access_mechanism": "TCIA Data Retriever",
+          "download-45785/downstream_access_system": "General Commons",
           "download-45785/access_level": "controlled",
           "download-45785/license_label": "NIH Controlled Data Access Policy",
           "download-45785/license_url": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/",
@@ -1328,6 +1406,7 @@
           "download-45785/download_requirements": "Download requires the TCIA Data Retriever"
         }
       ],
+      "conditionsOfAccess": "Controlled-access TCIA data. Users must obtain authorization and follow the TCIA NIH Controlled Data Access Policy before accessing this row.",
       "usageInfo": [
         {
           "@type": "CreativeWork",
@@ -1461,6 +1540,7 @@
           "download-45787/license_url": "https://creativecommons.org/licenses/by/4.0/"
         }
       ],
+      "conditionsOfAccess": "Open-access TCIA data. Users must follow the listed license and TCIA Data Usage Policies and Restrictions.",
       "usageInfo": [
         {
           "@type": "CreativeWork",
@@ -1543,13 +1623,45 @@
     },
     {
       "@type": "PropertyValue",
+      "name": "TCIA downstream access systems",
+      "value": [
+        "General Commons"
+      ]
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "TCIA search systems",
+      "value": [
+        "General Commons"
+      ]
+    },
+    {
+      "@type": "PropertyValue",
       "name": "Croissant generator",
       "value": "tcia-croissant-prototype/0.1.0"
     },
     {
       "@type": "PropertyValue",
       "name": "TCIA snapshot schema version",
-      "value": "1"
+      "value": "5"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "TCIA external resources",
+      "value": [
+        "Clinical",
+        "Image Analyses"
+      ]
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "TCIA has external clinical resource",
+      "value": true
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "TCIA has TCIA clinical download",
+      "value": true
     }
   ]
 }

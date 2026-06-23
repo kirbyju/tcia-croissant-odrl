@@ -1,6 +1,6 @@
 # TCIA Croissant Metadata Prototype
 
-Date: 2026-05-29
+Date: 2026-06-23
 
 This note summarizes a local prototype for publishing TCIA dataset metadata in
 Croissant JSON-LD. The goal is to help TCIA developers evaluate how Croissant
@@ -19,6 +19,8 @@ that same information. It should help automated tools answer questions like:
 - What is this TCIA dataset?
 - What is the DOI and recommended citation?
 - What download/access rows are available?
+- Which URL is the search/browse interface, and which URL is the download,
+  manifest, or transfer-package handoff?
 - Which rows are direct files, manifests, or transfer-package handoffs?
 - Which license, policy, and access requirements apply to each row?
 - Which application or workflow is needed to access the linked artifact?
@@ -125,6 +127,21 @@ This prototype intentionally stops at the TCIA download/access row. Actual data
 download behavior should remain in TCIA tooling such as TCIA Data Retriever,
 IDC/idc-index workflows, General Commons controlled-access workflows, and Aspera.
 
+TCIA also often exposes two user-facing functions for the same row:
+
+```text
+Search/Browse button -> web interface for inspecting or filtering data
+Download button      -> direct file, manifest, or transfer-package handoff
+```
+
+Both functions are worth representing, but they should not be conflated. The
+download button maps to the Croissant `FileObject.contentUrl` and row-level
+`download_url`. The search/browse button maps to row-level `search_url` and
+`search_system` metadata. A search page can help a tool route the user to NBIA
+Search, PathDB, CTDC, or General Commons, but it is not treated as a Croissant
+payload file and `mlcroissant` is not expected to load records from that web
+interface.
+
 ## Current Prototype Output
 
 The proof of concept generates a directory with this shape:
@@ -165,15 +182,15 @@ Current output summary:
 | Controlled datasets | 24 |
 | Mixed open/controlled datasets | 41 |
 | Open noncommercial datasets | 9 |
-| Direct data-file download rows | 338 |
+| Direct data-file download rows | 337 |
 | Data Retriever manifest download rows | 252 |
-| Aspera transfer-package artifacts | 101 |
+| Aspera transfer-package artifacts | 102 |
 | Metadata-only download rows without a URL | 7 |
 
 Current zip SHA-256:
 
 ```text
-b797bf44d8968f49cba776a8a8a3306128be11fc51d38527e575c7ae4f6b7b6c
+09de814954492972da03b77e069297f1f7fa161cfb17d72c5ec4f789461134b1
 ```
 
 The generated JSON-LD files were validated with `mlcroissant` 1.1.0:
@@ -202,10 +219,17 @@ Important fields:
 | `@type: sc:Dataset` | Croissant dataset root for a TCIA Collection or Analysis Result. |
 | `distribution` | Linked artifacts exposed by TCIA download rows. |
 | `recordSet` | One RecordSet per TCIA download/access row. |
+| `download_url` | URL behind the download button. This may be a direct data file, a Data Retriever manifest, or an Aspera/Faspex handoff. |
 | `download_artifact_role` | `data file`, `manifest`, or `transfer package`. |
 | `access_mechanism` | `direct download`, `TCIA Data Retriever`, or `Aspera`. |
+| `downstream_access_system` | Best-effort route label such as IDC, CTDC, General Commons, or Aspera when it can be inferred from TCIA metadata. |
+| `search_url` | URL behind the search/browse button for a download row when WordPress provides one. |
+| `search_system` | Best-effort label for the search or browse interface behind `search_url`, such as NBIA Search, CTDC, General Commons, or PathDB. |
 | `file_types` | TCIA payload labels, such as DICOM, CSV, XLSX, ZIP, NIfTI. |
 | `encodingFormat` | The format of the linked artifact at `contentUrl`, not necessarily the payload behind a manifest. |
+| `isBasedOn` | For Analysis Results, links to inferred source collections and source-image access rows when the source metadata exists in the snapshot. |
+| `TCIA source image access levels` | Dataset-level summary of access conditions on source images used by an Analysis Result. This is separate from the Analysis Result's own access level. |
+| `TCIA external resources` | Dataset-level or row-level external-resource labels, such as clinical data hosted outside TCIA. |
 | `usageInfo` | Links to TCIA policy/licensing information, with lightweight ODRL-compatible structure. |
 
 The artifact role is based on TCIA's download-requirements helper metadata, not
@@ -215,16 +239,38 @@ for this prototype, the helper metadata is available inside each raw WordPress
 download record as `download requirements`. Newer snapshot schemas also expose
 the same information in normalized download columns.
 
-Example: A091105-Tumor-Annotations has two download rows:
+Current curated examples:
 
-| Download row | Linked artifact | Artifact role | Access mechanism | Payload label |
-| --- | --- | --- | --- | --- |
-| `46387` | `.tcia` manifest | `manifest` | `TCIA Data Retriever` | DICOM |
-| `46389` | CSV file | `data file` | `direct download` | CSV |
+| Example | Why it is useful |
+| --- | --- |
+| 4D-LUNG | Public DICOM dataset with a Data Retriever manifest and IDC as the downstream storage/access route. |
+| CMB-AML | Controlled-access radiology data routed through CTDC, open radiology, Aspera pathology data with PathDB search, and an external clinical-resource signal. |
+| Breast Cancer Screening DBT | Open dataset with a noncommercial license condition, useful for CC BY-NC policy handling. |
+| HNSCC | Mixed open/controlled dataset with controlled DICOM manifests routed through General Commons plus direct open clinical files. |
+| SAROS | Analysis Result with open NIfTI segmentation outputs derived from source image collections spanning controlled, CC BY, and CC BY-NC access bands. |
 
-In Python, `mlcroissant.Dataset(...).records("download-46387")` returns the
-metadata record for the Data Retriever manifest. It does not return DICOM
-instances.
+In Python, `mlcroissant.Dataset(...).records("download-...")` returns the
+metadata record for a TCIA download/access row. It does not return DICOM
+instances, pathology slides, CTDC objects, or General Commons files.
+
+Example: CMB-AML has current radiology and pathology download rows. The
+radiology rows are Data Retriever manifests, one open and one controlled through
+CTDC. The pathology row has a PathDB search URL and an Aspera transfer-package
+download URL, so it is important to model `search_system` separately from
+`access_mechanism`. The dataset also has an external clinical-resource signal,
+so it is a useful example for testing that Croissant can describe TCIA-hosted
+imaging access separately from related clinical resources hosted elsewhere.
+
+Example: SAROS is an Analysis Result rather than a Collection. Its current
+download rows are open CC BY 4.0 derived outputs: a NIfTI/ZIP segmentation
+package and a CSV information file. The source CT images used to create those
+segmentations are not the SAROS payloads, but they matter for provenance and
+reuse. The prototype therefore keeps the SAROS `recordSet` entries focused on
+the current result downloads and adds `isBasedOn` metadata for source
+collections and source-image access rows. In the current snapshot, SAROS exposes
+28 inferred source collections and four source-image access rows covering
+controlled General Commons manifests, CC BY 3.0 manifests, CC BY-NC 3.0
+manifests, and CC BY 4.0 manifests.
 
 ## Direct Files Versus Manifests
 
@@ -240,8 +286,20 @@ download images.
 For an Aspera row, the prototype describes the row as a transfer-package handoff.
 It does not reconstruct or automate the Aspera package download.
 
+For a row with a search/browse URL, the prototype records the web interface as
+metadata. It does not make that web page a `FileObject`, and it does not ask
+Croissant tooling to scrape or automate that web interface.
+
 This conservative behavior is intentional. TCIA can add richer record sets later
 for selected direct CSV or spreadsheet files, but that should be a second phase.
+
+For Analysis Results, source-image context is represented as provenance, not as
+additional result payload. If the raw snapshot provides source image rows, the
+prototype places those under `isBasedOn` as Schema.org `DataDownload` objects and
+summarizes the source-image access levels, licenses, and downstream access
+systems in dataset-level `additionalProperty` entries. This lets SAROS show that
+its derived NIfTI result is open while its source images span open,
+noncommercial-use, and controlled access conditions.
 
 ## Policy And Licensing
 
@@ -262,6 +320,22 @@ is a place to expose policy links and lightweight ODRL-compatible statements.
 
 The local prototype should not be registered in DataCite yet because the JSON-LD
 files are not hosted at stable TCIA-owned URLs.
+
+TCIA dataset pages already embed some Schema.org Dataset metadata. Production
+integration should refine that existing page-level JSON-LD rather than replace
+it with Croissant. The recommended pattern is:
+
+- keep a concise Schema.org `Dataset` node in each dataset page
+- give the Dataset node a stable `@id`
+- connect the page graph to the Dataset with `mainEntity`
+- reserve Schema.org `citation` for related papers, not the dataset's own DOI
+- use `identifier` and `sameAs` for the DOI
+- describe mixed access with `conditionsOfAccess` and per-download-row metadata
+- link to, rather than embed, the full Croissant document
+- link Croissant and Schema.org policy fields to reusable ODRL policy documents
+
+See `website-integration-recommendations.md` for the detailed HTML, Schema.org,
+ODRL, and DataCite recommendations.
 
 Once production URLs exist, TCIA could:
 

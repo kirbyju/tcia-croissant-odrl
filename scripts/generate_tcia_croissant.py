@@ -23,6 +23,7 @@ DEFAULT_OUT = Path("croissant-output")
 TCIA_DATA_USAGE_POLICY_URL = "https://www.cancerimagingarchive.net/data-usage-policies-and-restrictions/"
 TCIA_CONTROLLED_ACCESS_POLICY_URL = "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/"
 TCIA_ORG_URL = "https://www.cancerimagingarchive.net/"
+TCIA_CATALOG_ID = "https://www.cancerimagingarchive.net/#catalog"
 CROISSANT_CONFORMS_TO = "http://mlcommons.org/croissant/1.1"
 GENERATOR_VERSION = "tcia-croissant-prototype/0.1.0"
 
@@ -170,6 +171,7 @@ def normalize_download(download: dict[str, Any], index: int) -> dict[str, Any]:
 
     download_id = clean_text(get_first(download, "id", "download_id")) or f"row-{index + 1}"
     url = clean_text(get_first(download, "download url", "download_url", "url"))
+    search_url = clean_text(get_first(download, "search url", "search_url", "access url", "access_url"))
     title = clean_text(get_first(download, "title", "download title", "download_title"))
     metadata_url = clean_text(get_first(download, "download metadata", "download_metadata"))
     size = clean_text(get_first(download, "download size", "download_size"))
@@ -185,6 +187,7 @@ def normalize_download(download: dict[str, Any], index: int) -> dict[str, Any]:
         "id": download_id,
         "title": title,
         "url": url,
+        "search_url": search_url,
         "metadata_url": metadata_url,
         "description": description,
         "license_label": license_label,
@@ -357,6 +360,42 @@ def organization() -> dict[str, str]:
     return {"@type": "Organization", "name": "The Cancer Imaging Archive", "url": TCIA_ORG_URL}
 
 
+def data_catalog() -> dict[str, Any]:
+    return {
+        "@type": "DataCatalog",
+        "@id": TCIA_CATALOG_ID,
+        "name": "The Cancer Imaging Archive",
+        "url": TCIA_ORG_URL,
+        "publisher": organization(),
+    }
+
+
+def conditions_of_access(access_level: str) -> str:
+    if access_level == "controlled":
+        return (
+            "Controlled-access TCIA data. Users must obtain authorization and follow the "
+            "TCIA NIH Controlled Data Access Policy before accessing this row."
+        )
+    if access_level == "mixed":
+        return (
+            "Mixed open and controlled access. Review each TCIA download row for its "
+            "license, access mechanism, and controlled-access requirements."
+        )
+    if access_level == "open_noncommercial":
+        return (
+            "Open-access TCIA data with a noncommercial-use license condition. Users "
+            "must follow the listed license and TCIA Data Usage Policies and Restrictions."
+        )
+    if access_level == "open":
+        return (
+            "Open-access TCIA data. Users must follow the listed license and TCIA Data "
+            "Usage Policies and Restrictions."
+        )
+    if access_level == "metadata only":
+        return "Metadata-only TCIA download row; no linked download artifact is available."
+    return "Review the TCIA landing page and download-row metadata for current access conditions."
+
+
 def policy_usage_info(access_level: str, license_label: str = "", license_url: str = "") -> list[dict[str, Any]]:
     usage: list[dict[str, Any]] = [
         {
@@ -486,6 +525,48 @@ def download_artifact_role(download: dict[str, Any]) -> str:
     return "data file"
 
 
+def downstream_access_system(download: dict[str, Any]) -> str:
+    text = lower_text(
+        download.get("title"),
+        download.get("url"),
+        download.get("search_url"),
+        download.get("metadata_url"),
+        download.get("requirements_label"),
+        download.get("requirements_text"),
+        download.get("requirements_url"),
+    )
+    if "general.datacommons.cancer.gov" in text or "gc_manifest" in text:
+        return "General Commons"
+    if "clinical.datacommons.cancer.gov" in text or "drs_metadata_manifest" in text or "ctdc" in text:
+        return "Clinical Translational Data Commons (CTDC)"
+    if access_mechanism(download) == "Aspera":
+        return "Aspera"
+    if (
+        access_mechanism(download) == "TCIA Data Retriever"
+        and download.get("access_level") in {"open", "open_noncommercial"}
+        and any(file_type.casefold() == "dicom" for file_type in download.get("file_types", []))
+    ):
+        return "Imaging Data Commons (IDC)"
+    return ""
+
+
+def search_system(download: dict[str, Any]) -> str:
+    text = lower_text(download.get("search_url"))
+    if not text:
+        return ""
+    if "pathdb.cancerimagingarchive.net" in text:
+        return "PathDB"
+    if "nbia.cancerimagingarchive.net" in text:
+        return "NBIA Search"
+    if "clinical.datacommons.cancer.gov" in text:
+        return "Clinical Translational Data Commons (CTDC)"
+    if "general.datacommons.cancer.gov" in text:
+        return "General Commons"
+    if "datacommons.cancer.gov" in text:
+        return "NCI Cancer Data Commons"
+    return ""
+
+
 def content_size(download: dict[str, Any]) -> str:
     size = download.get("download_size", "")
     unit = download.get("download_size_unit", "")
@@ -514,6 +595,7 @@ def file_object(download: dict[str, Any], file_id: str, fallback_name: str) -> d
         "name": name,
         "contentUrl": download["url"],
         "encodingFormat": encoding_formats(download["url"], download["file_types"]),
+        "conditionsOfAccess": conditions_of_access(download["access_level"]),
         "usageInfo": policy_usage_info(download["access_level"], download["license_label"], download["license_url"]),
     }
     add_if_present(item, "description", download["description"])
@@ -526,8 +608,12 @@ def file_object(download: dict[str, Any], file_id: str, fallback_name: str) -> d
         property_value("TCIA download types", download["download_types"]),
         property_value("TCIA data types", download["data_types"]),
         property_value("TCIA file types", download["file_types"]),
+        property_value("TCIA external resources", download["external_resources"]),
         property_value("TCIA download artifact role", download_artifact_role(download)),
         property_value("TCIA access mechanism", access_mechanism(download)),
+        property_value("TCIA downstream access system", downstream_access_system(download)),
+        property_value("TCIA search system", search_system(download)),
+        property_value("TCIA search/access URL", download["search_url"]),
         property_value("TCIA download metadata", download["metadata_url"]),
         property_value("TCIA download requirements", download["requirements_text"] or download["requirements_label"]),
     ]
@@ -571,6 +657,8 @@ def recordset(download: dict[str, Any], recordset_id: str, file_id: str | None, 
     add_field("download_id", "sc:Text", download["id"])
     if download["url"]:
         add_field("download_url", "sc:URL", download["url"])
+    if download["search_url"]:
+        add_field("search_url", "sc:URL", download["search_url"])
     if file_id:
         add_field("file_object_id", "sc:Text", file_id)
     add_field("download_types", "sc:Text", download["download_types"], is_array=True)
@@ -578,6 +666,10 @@ def recordset(download: dict[str, Any], recordset_id: str, file_id: str | None, 
     add_field("file_types", "sc:Text", download["file_types"], is_array=True)
     add_field("download_artifact_role", "sc:Text", download_artifact_role(download))
     add_field("access_mechanism", "sc:Text", access_mechanism(download))
+    if downstream_access_system(download):
+        add_field("downstream_access_system", "sc:Text", downstream_access_system(download))
+    if search_system(download):
+        add_field("search_system", "sc:Text", search_system(download))
     add_field("access_level", "sc:Text", download["access_level"])
     add_field("license_label", "sc:Text", download["license_label"])
     if download["license_url"]:
@@ -590,6 +682,8 @@ def recordset(download: dict[str, Any], recordset_id: str, file_id: str | None, 
         add_field("download_metadata", "sc:URL", download["metadata_url"])
     if download["requirements_text"] or download["requirements_label"]:
         add_field("download_requirements", "sc:Text", download["requirements_text"] or download["requirements_label"])
+    if download["external_resources"]:
+        add_field("external_resources", "sc:Text", download["external_resources"], is_array=True)
 
     item: dict[str, Any] = {
         "@type": "cr:RecordSet",
@@ -600,6 +694,7 @@ def recordset(download: dict[str, Any], recordset_id: str, file_id: str | None, 
         "key": {"@id": f"{recordset_id}/download_id"},
         "field": fields,
         "data": [inline_record],
+        "conditionsOfAccess": conditions_of_access(download["access_level"]),
         "usageInfo": policy_usage_info(download["access_level"], download["license_label"], download["license_url"]),
     }
     return item
@@ -637,6 +732,139 @@ def dataset_licenses(normalized: dict[str, Any], downloads: list[dict[str, Any]]
     return dedupe(values)
 
 
+def dataset_external_resources(normalized: dict[str, Any], raw: dict[str, Any]) -> list[str]:
+    values: list[str] = []
+    for key in ("external_resources", "external resources", "supporting_data", "supporting data"):
+        values.extend(as_list(normalized.get(key) or raw.get(key)))
+    return dedupe(values)
+
+
+def dataset_downstream_access_systems(downloads: list[dict[str, Any]]) -> list[str]:
+    return dedupe([downstream_access_system(download) for download in downloads])
+
+
+def dataset_search_systems(downloads: list[dict[str, Any]]) -> list[str]:
+    return dedupe([search_system(download) for download in downloads])
+
+
+def source_collections_from_summary(text: str) -> list[dict[str, Any]]:
+    match = re.search(r"following TCIA collections.*?:\s*(.+?)\.", clean_text(text), flags=re.IGNORECASE)
+    if not match:
+        return []
+    collections: list[dict[str, Any]] = []
+    for part in match.group(1).split(","):
+        cleaned = clean_text(part)
+        if not cleaned:
+            continue
+        count_match = re.match(r"^(?P<name>.+?)\s*\((?P<count>[\d,]+)\)$", cleaned)
+        if count_match:
+            item: dict[str, Any] = {"name": clean_text(count_match.group("name"))}
+            count = int_value(count_match.group("count"))
+            if count is not None:
+                item["series_count"] = count
+        else:
+            item = {"name": cleaned}
+        item["inference"] = "Parsed from analysis-result summary text"
+        collections.append(item)
+    return collections
+
+
+def dataset_source_collections(normalized: dict[str, Any], raw: dict[str, Any]) -> list[dict[str, Any]]:
+    collections: list[dict[str, Any]] = []
+    for value in (normalized.get("source_collections"), raw.get("source_collections"), raw.get("collections")):
+        if isinstance(value, list):
+            for item in value:
+                if isinstance(item, dict):
+                    name = clean_text(item.get("title") or item.get("name") or item.get("short_title") or item.get("label"))
+                    if name:
+                        entry: dict[str, Any] = {"name": name}
+                        add_if_present(entry, "url", clean_text(item.get("url") or item.get("link")))
+                        collections.append(entry)
+                else:
+                    name = clean_text(item)
+                    if name:
+                        collections.append({"name": name})
+        else:
+            for name in as_list(value):
+                collections.append({"name": name})
+    if not collections:
+        collections = source_collections_from_summary(
+            clean_text(normalized.get("summary") or raw.get("result_summary") or raw.get("summary"))
+        )
+    seen: set[str] = set()
+    output: list[dict[str, Any]] = []
+    for item in collections:
+        name = clean_text(item.get("name"))
+        key = name.casefold()
+        if name and key not in seen:
+            seen.add(key)
+            output.append(item)
+    return output
+
+
+def source_collection_refs(source_collections: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    refs: list[dict[str, Any]] = []
+    for item in source_collections:
+        ref: dict[str, Any] = {"@type": "Dataset", "name": item["name"]}
+        add_if_present(ref, "url", item.get("url"))
+        additional = [
+            property_value("TCIA source CT series count", item.get("series_count")),
+            property_value("TCIA source collection inference", item.get("inference")),
+        ]
+        properties = [entry for entry in additional if entry]
+        if properties:
+            ref["additionalProperty"] = properties
+        refs.append(ref)
+    return refs
+
+
+def source_image_downloads(raw: dict[str, Any], source: str) -> list[dict[str, Any]]:
+    if source != "analysis-results":
+        return []
+    return [
+        normalize_download(download, index)
+        for index, download in enumerate(raw.get("collection_downloads") or [])
+        if isinstance(download, dict)
+    ]
+
+
+def source_image_access_object(download: dict[str, Any], access_id: str, fallback_name: str) -> dict[str, Any]:
+    license_value = download["license_url"] or download["license_label"]
+    name = download["title"] or file_name_from_url(download["url"], fallback_name)
+    item: dict[str, Any] = {
+        "@type": "DataDownload",
+        "@id": access_id,
+        "name": name,
+        "contentUrl": download["url"],
+        "encodingFormat": encoding_formats(download["url"], download["file_types"]),
+        "conditionsOfAccess": conditions_of_access(download["access_level"]),
+        "usageInfo": policy_usage_info(download["access_level"], download["license_label"], download["license_url"]),
+    }
+    add_if_present(item, "contentSize", content_size(download))
+    add_if_present(item, "license", license_value)
+    add_if_present(item, "dateModified", download["date_updated"])
+    additional = [
+        property_value("TCIA source image access row", True),
+        property_value("TCIA download id", download["id"]),
+        property_value("TCIA access level", download["access_level"]),
+        property_value("TCIA data types", download["data_types"]),
+        property_value("TCIA file types", download["file_types"]),
+        property_value("TCIA download artifact role", download_artifact_role(download)),
+        property_value("TCIA access mechanism", access_mechanism(download)),
+        property_value("TCIA downstream access system", downstream_access_system(download)),
+        property_value("TCIA download metadata", download["metadata_url"]),
+        property_value("TCIA download requirements", download["requirements_text"] or download["requirements_label"]),
+        property_value("TCIA subjects", download["subjects"]),
+        property_value("TCIA studies", download["studies"]),
+        property_value("TCIA series", download["series"]),
+        property_value("TCIA images", download["images"]),
+    ]
+    properties = [entry for entry in additional if entry]
+    if properties:
+        item["additionalProperty"] = properties
+    return item
+
+
 def build_document(row: sqlite3.Row, datacite_by_short_title: dict[str, dict[str, Any]]) -> tuple[dict[str, Any], dict[str, Any]]:
     source = row["source"]
     raw = parse_json(row["raw_json"], {})
@@ -652,6 +880,14 @@ def build_document(row: sqlite3.Row, datacite_by_short_title: dict[str, dict[str
     ]
     access_level = dataset_access_level(normalized, downloads)
     licenses = dataset_licenses(normalized, downloads)
+    external_resources = dataset_external_resources(normalized, raw)
+    downstream_systems = dataset_downstream_access_systems(downloads)
+    search_systems = dataset_search_systems(downloads)
+    source_collections = dataset_source_collections(normalized, raw) if source == "analysis-results" else []
+    source_downloads = source_image_downloads(raw, source)
+    source_downstream_systems = dataset_downstream_access_systems(source_downloads)
+    source_access_levels = dedupe([download["access_level"] for download in source_downloads])
+    source_licenses = dataset_licenses({}, source_downloads)
     distribution: list[dict[str, Any]] = []
     recordsets: list[dict[str, Any]] = []
     for index, download in enumerate(downloads):
@@ -662,6 +898,16 @@ def build_document(row: sqlite3.Row, datacite_by_short_title: dict[str, dict[str
             file_id = f"file-{base}"
             distribution.append(file_object(download, file_id, f"{short_title}-download-{index + 1}"))
         recordsets.append(recordset(download, recordset_id, file_id, short_title))
+    source_context: list[dict[str, Any]] = source_collection_refs(source_collections)
+    for index, download in enumerate(source_downloads):
+        base = slugify(download["id"], f"source-image-access-{index + 1}")
+        source_context.append(
+            source_image_access_object(
+                download,
+                f"source-image-access-{base}",
+                f"{short_title}-source-image-access-{index + 1}",
+            )
+        )
 
     doc: dict[str, Any] = {
         "@context": context(),
@@ -669,20 +915,24 @@ def build_document(row: sqlite3.Row, datacite_by_short_title: dict[str, dict[str
         "@id": doi_url(doi) or f"{link.rstrip('/')}/#dataset",
         "conformsTo": CROISSANT_CONFORMS_TO,
         "name": title,
+        "alternateName": short_title,
         "description": short_description(normalized, raw, title),
         "url": link,
         "creator": organization(),
         "publisher": organization(),
+        "includedInDataCatalog": data_catalog(),
         "license": licenses or [TCIA_DATA_USAGE_POLICY_URL],
         "citeAs": citation_text(raw, datacite, title, doi),
         "keywords": dataset_keywords(normalized, raw, source, short_title),
         "sdPublisher": organization(),
         "sdVersion": "0.1.0",
         "isLiveDataset": True,
+        "conditionsOfAccess": conditions_of_access(access_level),
         "usageInfo": policy_usage_info(access_level),
         "distribution": distribution,
         "recordSet": recordsets,
     }
+    add_if_present(doc, "isBasedOn", source_context)
     identifiers = [
         property_value("TCIA short title", short_title),
         property_value("TCIA dataset type", dataset_type_for_source(source)),
@@ -704,9 +954,21 @@ def build_document(row: sqlite3.Row, datacite_by_short_title: dict[str, dict[str
         property_value("TCIA license status", normalized.get("license_status")),
         property_value("TCIA subjects", normalized.get("subjects")),
         property_value("TCIA program", normalized.get("program")),
+        property_value("TCIA downstream access systems", downstream_systems),
+        property_value("TCIA search systems", search_systems),
+        property_value("TCIA source collections", [item["name"] for item in source_collections]),
+        property_value("TCIA source image access levels", source_access_levels),
+        property_value("TCIA source image licenses", source_licenses),
+        property_value("TCIA source image access systems", source_downstream_systems),
         property_value("Croissant generator", GENERATOR_VERSION),
         property_value("TCIA snapshot schema version", row["schema_version"]),
     ]
+    if external_resources:
+        additional.append(property_value("TCIA external resources", external_resources))
+    if normalized.get("has_external_clinical_resource") is True:
+        additional.append(property_value("TCIA has external clinical resource", True))
+    if external_resources and "has_tcia_clinical_download" in normalized:
+        additional.append(property_value("TCIA has TCIA clinical download", normalized.get("has_tcia_clinical_download")))
     doc["additionalProperty"] = [entry for entry in additional if entry]
 
     index_entry = {
@@ -718,6 +980,8 @@ def build_document(row: sqlite3.Row, datacite_by_short_title: dict[str, dict[str
         "access_level": access_level,
         "licenses": licenses,
         "download_recordsets": len(recordsets),
+        "source_collections": len(source_collections),
+        "source_image_access_rows": len(source_downloads),
     }
     return doc, index_entry
 
@@ -813,6 +1077,7 @@ def generate(db_path: Path, output_dir: Path, include_hidden: bool = False, limi
                 "- Each current TCIA download row is represented as both a `cr:FileObject` in `distribution` and a child `cr:RecordSet` in `recordSet`.",
                 "- `encodingFormat` describes the linked download artifact itself. TCIA payload labels such as DICOM are retained separately as `TCIA file types`.",
                 "- Manifest/application handoffs are identified with `TCIA download artifact role` and `TCIA access mechanism` metadata.",
+                "- Search/browse URLs are represented separately as `search_url` and `search_system`; they are not treated as Croissant payload files.",
                 "- Dataset and download-level `usageInfo` include TCIA policy links and lightweight ODRL stubs for controlled or noncommercial access conditions.",
                 "- `isLiveDataset` is set to `true` because the snapshot does not contain real file checksums; production TCIA Croissant should prefer stable file SHA-256 values where available.",
                 "- The files are a prototype. They are not official TCIA website metadata, DataCite metadata, or legal guidance.",
