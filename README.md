@@ -26,14 +26,7 @@ requirements.txt
 
 The example Croissant files are representative samples only. They cover public
 DICOM series, controlled DRS objects, NIfTI segmentations and related tabular
-data, and two digital pathology workflows:
-
-- **HNSCC-mIF-mIHC-comparison** describes 3,212 directly downloadable PathDB
-  image records for an AI-ready computational pathology collection with
-  multiplex immunofluorescence and immunohistochemistry imagery.
-- **CMB-AML** describes a histopathology transfer inventory alongside public
-  and controlled radiology recordsets, demonstrating how one multimodal dataset
-  can expose different retrieval routes without losing record-level metadata.
+data, and two digital pathology workflows.
 
 The files under `examples/recordset-manifests/` cover 4D-Lung,
 HNSCC-mIF-mIHC-comparison, CMB-AML, and SAROS. Each dataset has one Croissant
