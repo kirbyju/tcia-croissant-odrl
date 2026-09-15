@@ -1,0 +1,23 @@
+{
+  "validated_at_utc": "2026-09-15T13:10:35Z",
+  "croissant_validator": "mlcroissant==1.1.0",
+  "croissant_documents_checked": 4,
+  "csv_files_checked": 7,
+  "result": "pass",
+  "checks": [
+    "Every dataset Croissant passes mlcroissant validate.",
+    "Every RecordSet omits inline data and sources all fields from one CSV FileObject.",
+    "Every CSV FileObject checksum and byte count matches the local CSV.",
+    "CSV row counts and retrieval keys match the generation contract.",
+    "Every retrieval key is populated and unique within its RecordSet.",
+    "No CSV contains more than one recognized Data Retriever route header.",
+    "The controlled CSV contains DRS identifiers and dbGaP accession phs002192 but no credential material.",
+    "All seven CSV files were imported, inspected, and rendered with the bundled spreadsheet runtime."
+  ],
+  "croissant_files": [
+    "analysis-results/saros/croissant.jsonld",
+    "collections/4d-lung/croissant.jsonld",
+    "collections/cmb-aml/croissant.jsonld",
+    "collections/hnscc-mif-mihc-comparison/croissant.jsonld"
+  ]
+}

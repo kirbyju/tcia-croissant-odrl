@@ -29,3 +29,7 @@ images as SAROS result payloads.
 
 A091105 examples are intentionally not included because that dataset is
 currently offline while it waits for migration into CTDC.
+
+The external-CSV recordset pilot is separate from these access-summary files.
+See [`recordset-manifests/`](recordset-manifests/) for four dataset Croissant
+documents, seven recordset CSV files, generation evidence, and review notes.

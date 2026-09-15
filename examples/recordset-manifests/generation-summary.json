@@ -1,0 +1,125 @@
+{
+  "generator": "generate_recordset_examples.py",
+  "generator_version": "0.3.0-draft",
+  "generated_at_utc": "2026-09-15T13:08:41.130235+00:00",
+  "croissant_conforms_to": "http://mlcommons.org/croissant/1.1",
+  "record_storage": "external_csv_fileobjects",
+  "record_storage_note": "The complete record inventory is stored in a route-specific CSV FileObject. Each Croissant Field identifies its CSV column through a DataSource.",
+  "source_snapshot": {
+    "path": "tcia_snapshot.sqlite",
+    "content_sha256": "cd23b5b89659563614b03bb4f2b5e100c6f13fa623a43ec91df18a53e38b9ba1",
+    "generated_at_utc": "2026-08-13T12:04:53.537235+00:00"
+  },
+  "source_artifacts": {
+    "4d-lung.tcia": {
+      "sha256": "52473706a6c41e6ebeffc9d23873f3d7d070cb6a16f8d5fd51da7dc0b7cdf8db",
+      "bytes": 421252
+    },
+    "4d-lung-metadata.xlsx": {
+      "sha256": "8df3c4059f979d181bbaa87480c17d243669eaf750dc7a8a572727206dd2bed9",
+      "bytes": 1098149
+    },
+    "cmb-aml-public.tcia": {
+      "sha256": "8183a7e48b9cff6fbd2bfef0cb16483ace22ee99612dcb66630cf1b103e1f2e7",
+      "bytes": 3549
+    },
+    "cmb-aml-public-metadata.xlsx": {
+      "sha256": "b0a0784e60913e6c5d994d078899175c78061d451452cbdebc27f30cf8360b36",
+      "bytes": 16192
+    },
+    "cmb-aml-controlled.csv": {
+      "sha256": "22896c5ef2abc4fab444da3f56ce13b31773a8aa5ed2537638cc0a2496f6bbc3",
+      "bytes": 40574
+    },
+    "saros-segmentation-info.csv": {
+      "sha256": "66d932459fbb9c294fcd1322ae55b7609d302909d342658de4f641acfe96a92e",
+      "bytes": 180787
+    },
+    "public_non_dicom_metadata.sqlite": {
+      "sha256": "fb8e228f0f9261a692572242771db6ecb2072ff7fc9959b9ff87f5376eb8609c",
+      "bytes": 5932548096
+    }
+  },
+  "files": {
+    "collections/4d-lung/recordsets/42107-public-dicom-series.csv": {
+      "sha256": "92bd48196ee654641560fe8a6d7c242268893a5fcb1fdb5b81b1467b9cfa4444",
+      "bytes": 3902809,
+      "recordsets": 1,
+      "records": 6690,
+      "role": "recordset_csv",
+      "retrieval_key": "SeriesInstanceUID"
+    },
+    "collections/4d-lung/croissant.jsonld": {
+      "sha256": "a8297ab02bb3780fd69fc328c7a41e51ee89e45aeb826e7fae69725082657fa2",
+      "recordsets": 1,
+      "records": 6690,
+      "role": "dataset_croissant"
+    },
+    "collections/hnscc-mif-mihc-comparison/recordsets/pathdb-images.csv": {
+      "sha256": "e424bf74370020a34d88adc2b1f632dc10a4416d646383305e8a97d7bb916396",
+      "bytes": 1497579,
+      "recordsets": 1,
+      "records": 3212,
+      "role": "recordset_csv",
+      "retrieval_key": "imageUrl"
+    },
+    "collections/hnscc-mif-mihc-comparison/croissant.jsonld": {
+      "sha256": "baeda20893595f37d770d0dc7b9952fbdfd856933797c545b09db504f7570ae3",
+      "recordsets": 1,
+      "records": 3212,
+      "role": "dataset_croissant"
+    },
+    "collections/cmb-aml/recordsets/48105-public-dicom-series.csv": {
+      "sha256": "dff1d355939fb8c0fc44355dd86401ce938fe25f5833a8f870a7b5d57202f709",
+      "bytes": 28033,
+      "recordsets": 1,
+      "records": 52,
+      "role": "recordset_csv",
+      "retrieval_key": "SeriesInstanceUID"
+    },
+    "collections/cmb-aml/recordsets/48107-controlled-drs-files.csv": {
+      "sha256": "dde9c54ef71b75d08828e9e223c88958acb2b482a4c84c7e205278f4d96f8843",
+      "bytes": 43211,
+      "recordsets": 1,
+      "records": 65,
+      "role": "recordset_csv",
+      "retrieval_key": "drs_uri"
+    },
+    "collections/cmb-aml/recordsets/41647-aspera-pathology-files.csv": {
+      "sha256": "8bd735b1095e40f7164c3fc5b4ebb216324280d2c2bcb1600e5adeffa5b218f4",
+      "bytes": 68481,
+      "recordsets": 1,
+      "records": 62,
+      "role": "recordset_csv",
+      "retrieval_key": "asset_id"
+    },
+    "collections/cmb-aml/croissant.jsonld": {
+      "sha256": "e8e7d13fbfc9f555bdf87cc76e30c835295e68ff11d5315045eef765c9d11aaf",
+      "recordsets": 3,
+      "records": 179,
+      "role": "dataset_croissant"
+    },
+    "analysis-results/saros/recordsets/46289-segmentation-files.csv": {
+      "sha256": "46d5fc36d3cef3402e21590ba4375c055e7c105a72d3a84d2514cfa6d5943368",
+      "bytes": 5541945,
+      "recordsets": 1,
+      "records": 1709,
+      "role": "recordset_csv",
+      "retrieval_key": "asset_id"
+    },
+    "analysis-results/saros/recordsets/46291-data-records.csv": {
+      "sha256": "f4817246e42b1fb83d1bf53860761eace3ca69721808c41695e42dbb282f2b14",
+      "bytes": 194310,
+      "recordsets": 1,
+      "records": 900,
+      "role": "recordset_csv",
+      "retrieval_key": "id"
+    },
+    "analysis-results/saros/croissant.jsonld": {
+      "sha256": "38041bb2a803e648258e46317c1cb09a2497bfcdea630a8425c2f51ff65af36b",
+      "recordsets": 2,
+      "records": 2609,
+      "role": "dataset_croissant"
+    }
+  }
+}

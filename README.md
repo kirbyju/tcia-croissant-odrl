@@ -4,18 +4,23 @@ This repository is a small prototype for publishing TCIA dataset metadata as
 Croissant JSON-LD while preserving TCIA's existing website, DOI, policy, and
 download-tool workflows.
 
-The current scope is intentionally conservative: Croissant describes TCIA
-datasets and their download/access rows. It does not try to make all TCIA
-imaging payloads directly importable through `mlcroissant`.
+The repository contains the original dataset-level access-summary examples and
+a recordset publication pilot. The pilot publishes one Croissant document per
+dataset and one human-readable CSV `FileObject` per WordPress download
+recordset. Croissant formally defines the CSV fields, keys, access conditions,
+and provenance; the CSV supplies the retrieval inventory and detailed metadata.
 
 ## What Is Included
 
 ```text
 docs/prototype-developer-notes.md
 docs/website-integration-recommendations.md
+docs/recordset-manifest-design.md
 scripts/generate_tcia_croissant.py
+scripts/generate_recordset_examples.py
 examples/*.croissant.jsonld
 examples/validation-summary.json
+examples/recordset-manifests/**
 requirements.txt
 ```
 
@@ -24,6 +29,12 @@ five important TCIA edge cases: public DICOM routed through IDC, controlled
 access routed through CTDC, noncommercial licensing, mixed access routed through
 General Commons, and an Analysis Result with NIfTI segmentations derived from
 source image collections with mixed access and licensing.
+
+The files under `examples/recordset-manifests/` cover 4D-Lung,
+HNSCC-mIF-mIHC-comparison, CMB-AML, and SAROS. Each dataset has one Croissant
+document whose RecordSets source their rows from route-specific CSV files. See
+[the recordset design note](docs/recordset-manifest-design.md) for the proposed
+WordPress and Data Retriever contract.
 
 ## What Is Not Included
 
@@ -80,8 +91,10 @@ modeled as Croissant `FileObject` payloads.
 
 ## Generate Croissant From A Snapshot
 
-The exporter uses Python's standard library and expects a TCIA metadata SQLite
-snapshot with WordPress records.
+The original access-summary exporter uses Python's standard library and expects
+a TCIA metadata SQLite snapshot with WordPress records. The recordset generator
+also reads CSV and XLSX source metadata using the dependencies in
+`requirements.txt`.
 
 This repository does not bundle the snapshot. For local experiments, get the
 latest published snapshot from the `tcia-query-skill` repository and point the
@@ -107,6 +120,24 @@ python3 scripts/generate_tcia_croissant.py \
   --out croissant-output
 ```
 
+The recordset pilot additionally requires the official `.tcia`, CSV, and XLSX
+source artifacts named by the generator's `--help` output, plus the query-skill
+public non-DICOM SQLite artifact. Generation records source hashes and refuses
+UID mismatches or duplicate retrieval keys:
+
+```bash
+python3 scripts/generate_recordset_examples.py \
+  --snapshot-db path/to/tcia_snapshot.sqlite \
+  --public-non-dicom-db path/to/public_non_dicom_metadata.sqlite \
+  --four-d-lung-manifest path/to/4d-lung.tcia \
+  --four-d-lung-metadata path/to/4d-lung-metadata.xlsx \
+  --cmb-public-manifest path/to/cmb-aml-public.tcia \
+  --cmb-public-metadata path/to/cmb-aml-public-metadata.xlsx \
+  --cmb-controlled-manifest path/to/cmb-aml-controlled.csv \
+  --saros-info path/to/saros-segmentation-info.csv \
+  --out recordset-output
+```
+
 ## Validate Examples
 
 Install the official validator:
@@ -121,6 +152,13 @@ Validate one file:
 mlcroissant validate --jsonld examples/4d-lung.open-manifest.croissant.jsonld
 ```
 
+For the external-CSV pilot:
+
+```bash
+mlcroissant validate \
+  --jsonld=examples/recordset-manifests/collections/cmb-aml/croissant.jsonld
+```
+
 Validate all examples:
 
 ```bash
@@ -128,10 +166,16 @@ python3 - <<'PY'
 from pathlib import Path
 import mlcroissant as mlc
 
-for path in sorted(Path("examples").glob("*.croissant.jsonld")):
+for path in sorted(Path("examples").glob("**/*.jsonld")):
     mlc.Dataset(str(path))
     print(f"ok {path}")
 PY
+```
+
+Run the recordset invariants:
+
+```bash
+python3 -m unittest discover -s tests
 ```
 
 ## More Detail
