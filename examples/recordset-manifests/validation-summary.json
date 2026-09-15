@@ -6,7 +6,7 @@
   "result": "pass",
   "checks": [
     "Every dataset Croissant passes mlcroissant validate.",
-    "Every RecordSet omits inline data and sources all fields from one CSV FileObject.",
+    "Every RecordSet sources all fields from one CSV FileObject.",
     "Every CSV FileObject checksum and byte count matches the local CSV.",
     "CSV row counts and retrieval keys match the generation contract.",
     "Every retrieval key is populated and unique within its RecordSet.",

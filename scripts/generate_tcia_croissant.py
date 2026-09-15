@@ -648,11 +648,11 @@ def recordset(download: dict[str, Any], recordset_id: str, file_id: str | None, 
     ]
     name = next((part for part in name_parts if part), f"Download {download['id']}")
     fields: list[dict[str, Any]] = []
-    inline_record: dict[str, Any] = {}
+    access_record: dict[str, Any] = {}
 
     def add_field(name: str, data_type: str, value: Any, is_array: bool = False) -> None:
         fields.append(field(recordset_id, name, data_type, is_array=is_array))
-        inline_record[f"{recordset_id}/{name}"] = value
+        access_record[f"{recordset_id}/{name}"] = value
 
     add_field("download_id", "sc:Text", download["id"])
     if download["url"]:
@@ -693,7 +693,7 @@ def recordset(download: dict[str, Any], recordset_id: str, file_id: str | None, 
         "dataType": "sc:DataDownload",
         "key": {"@id": f"{recordset_id}/download_id"},
         "field": fields,
-        "data": [inline_record],
+        "data": [access_record],
         "conditionsOfAccess": conditions_of_access(download["access_level"]),
         "usageInfo": policy_usage_info(download["access_level"], download["license_label"], download["license_url"]),
     }

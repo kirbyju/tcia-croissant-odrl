@@ -14,6 +14,12 @@ There are four Croissant documents and seven CSV files containing 12,690 rows.
 Every Croissant field identifies its source CSV and column. The generated
 `FileObject` also records the CSV byte size and SHA-256 checksum.
 
+Two examples explicitly cover digital pathology. HNSCC-mIF-mIHC-comparison
+provides 3,212 directly downloadable PathDB image records for multiplex
+immunofluorescence and immunohistochemistry data. CMB-AML includes a 62-row
+histopathology transfer inventory alongside its public and controlled radiology
+recordsets.
+
 Suggested review order:
 
 1. `collections/cmb-aml/croissant.jsonld` shows three recordsets with public

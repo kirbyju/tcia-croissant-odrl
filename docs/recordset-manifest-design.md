@@ -17,9 +17,8 @@ TCIA dataset Croissant
     └── download-b.csv
 ```
 
-This replaces the earlier inline `RecordSet.data` experiment. The repository
-now presents one approach for expert review: externally stored CSV records,
-formally described by Croissant.
+The repository presents one approach for expert review: externally stored CSV
+records formally described by Croissant.
 
 ## Why the CSV is a FileObject
 
@@ -91,6 +90,12 @@ An Aspera inventory is not asserted to be byte-equivalent to PathDB content.
 
 There are four Croissant documents and seven recordset CSV files. The examples
 contain 12,690 rows in total.
+
+The digital pathology coverage is intentional. HNSCC-mIF-mIHC-comparison
+demonstrates directly downloadable PathDB image records for multiplex
+immunofluorescence and immunohistochemistry data. CMB-AML demonstrates a
+histopathology transfer inventory published alongside radiology recordsets in a
+multimodal collection.
 
 ## Metadata preservation
 

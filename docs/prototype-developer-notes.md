@@ -205,9 +205,8 @@ Validation failures: 0
 Each visible TCIA WordPress Collection or Analysis Result becomes one Croissant
 `sc:Dataset`.
 
-Each current TCIA download row becomes one child `cr:RecordSet`. The RecordSet
-contains one inline metadata record describing the TCIA access row. It is not a
-record set of the payload files.
+Each current TCIA download row becomes one child `cr:RecordSet` describing the
+TCIA access row rather than the payload files behind it.
 
 Each download row with a URL also becomes one `cr:FileObject` in `distribution`.
 That `FileObject` describes the linked artifact itself.

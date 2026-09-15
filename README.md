@@ -4,11 +4,11 @@ This repository is a small prototype for publishing TCIA dataset metadata as
 Croissant JSON-LD while preserving TCIA's existing website, DOI, policy, and
 download-tool workflows.
 
-The repository contains the original dataset-level access-summary examples and
-a recordset publication pilot. The pilot publishes one Croissant document per
-dataset and one human-readable CSV `FileObject` per WordPress download
-recordset. Croissant formally defines the CSV fields, keys, access conditions,
-and provenance; the CSV supplies the retrieval inventory and detailed metadata.
+The repository demonstrates a recordset publication model with one Croissant
+document per dataset and one human-readable CSV `FileObject` per WordPress
+download recordset. Croissant formally defines the CSV fields, keys, access
+conditions, and provenance; the CSV supplies the retrieval inventory and
+detailed metadata.
 
 ## What Is Included
 
@@ -24,30 +24,22 @@ examples/recordset-manifests/**
 requirements.txt
 ```
 
-The example Croissant files are representative samples only. They illustrate
-five important TCIA edge cases: public DICOM routed through IDC, controlled
-access routed through CTDC, noncommercial licensing, mixed access routed through
-General Commons, and an Analysis Result with NIfTI segmentations derived from
-source image collections with mixed access and licensing.
+The example Croissant files are representative samples only. They cover public
+DICOM series, controlled DRS objects, NIfTI segmentations and related tabular
+data, and two digital pathology workflows:
+
+- **HNSCC-mIF-mIHC-comparison** describes 3,212 directly downloadable PathDB
+  image records for an AI-ready computational pathology collection with
+  multiplex immunofluorescence and immunohistochemistry imagery.
+- **CMB-AML** describes a histopathology transfer inventory alongside public
+  and controlled radiology recordsets, demonstrating how one multimodal dataset
+  can expose different retrieval routes without losing record-level metadata.
 
 The files under `examples/recordset-manifests/` cover 4D-Lung,
 HNSCC-mIF-mIHC-comparison, CMB-AML, and SAROS. Each dataset has one Croissant
 document whose RecordSets source their rows from route-specific CSV files. See
 [the recordset design note](docs/recordset-manifest-design.md) for the proposed
 WordPress and Data Retriever contract.
-
-## What Is Not Included
-
-This repo does not include:
-
-- a TCIA SQLite snapshot
-- a full generated Croissant corpus
-- TCIA Data Retriever logic
-- Aspera download automation
-- IDC, General Commons, or DICOM download code
-- production TCIA website integration
-
-Those pieces should remain in the appropriate TCIA systems and tools.
 
 ## Recommended Mental Model
 
@@ -189,9 +181,3 @@ See
 for recommendations on updating TCIA dataset page Schema.org JSON-LD, linking
 Croissant files from HTML, introducing reusable ODRL policies, and connecting
 stable Croissant URLs back to DataCite DOI records.
-
-## Licensing
-
-Before publishing this folder as a public GitHub repository, choose and add an
-appropriate repository license. Do not assume this prototype's code and examples
-inherit the licenses of the referenced TCIA datasets.
