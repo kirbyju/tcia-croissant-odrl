@@ -1,5 +1,9 @@
 # Website Integration Recommendations
 
+For current implementation priorities and requirements, use the
+[implementation guide](implementation-guide.md). This note supplies supporting
+design background; the guide takes precedence where recommendations differ.
+
 This note describes how the Croissant prototype could fit into TCIA dataset
 pages, DataCite DOI records, and ODRL policy metadata.
 

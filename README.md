@@ -1,5 +1,10 @@
 # TCIA Croissant Metadata Prototype
 
+**Current implementation guidance:** Start with the
+[TCIA Croissant implementation guide](docs/implementation-guide.md)
+(updated November 12, 2026) for development tasks, TDR compatibility boundaries,
+WordPress publication requirements, and the CMB-AML metadata example.
+
 This repository is a small prototype for publishing TCIA dataset metadata as
 Croissant JSON-LD while preserving TCIA's existing website, DOI, policy, and
 download-tool workflows.

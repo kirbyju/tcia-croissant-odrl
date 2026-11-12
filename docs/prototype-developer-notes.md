@@ -1,5 +1,9 @@
 # TCIA Croissant Metadata Prototype
 
+For current implementation priorities and requirements, use the
+[implementation guide](implementation-guide.md). This note supplies supporting
+design background; the guide takes precedence where recommendations differ.
+
 Date: 2026-06-23
 
 This note summarizes a local prototype for publishing TCIA dataset metadata in
