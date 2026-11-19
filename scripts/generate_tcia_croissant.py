@@ -17,6 +17,8 @@ from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
 
+from fair_metadata import add_metadata_provenance
+
 
 DEFAULT_DB = Path("cache/tcia_snapshot.sqlite")
 DEFAULT_OUT = Path("croissant-output")
@@ -464,8 +466,8 @@ def encoding_formats(url: str, file_types: list[str]) -> list[str]:
         ".zip": ["application/zip"],
         ".json": ["application/json"],
         ".pdf": ["application/pdf"],
-        ".tcia": ["text/plain", "application/vnd.tcia.manifest"],
-        ".nii": ["application/vnd.nifti"],
+        ".tcia": ["text/plain"],
+        ".nii": ["application/octet-stream"],
         ".gz": ["application/gzip"],
         ".svs": ["image/tiff"],
         ".tif": ["image/tiff"],
@@ -494,7 +496,7 @@ def encoding_formats(url: str, file_types: list[str]) -> list[str]:
         elif key in {"svs", "tiff", "tif"}:
             formats.append("image/tiff")
         elif key == "nifti":
-            formats.append("application/vnd.nifti")
+            formats.append("application/octet-stream")
     return dedupe(formats) or ["application/octet-stream"]
 
 
@@ -599,7 +601,8 @@ def file_object(download: dict[str, Any], file_id: str, fallback_name: str) -> d
         "usageInfo": policy_usage_info(download["access_level"], download["license_label"], download["license_url"]),
     }
     add_if_present(item, "description", download["description"])
-    add_if_present(item, "contentSize", content_size(download))
+    if download_artifact_role(download) == "data file":
+        add_if_present(item, "contentSize", content_size(download))
     add_if_present(item, "license", license_value)
     add_if_present(item, "dateModified", download["date_updated"])
     additional = [
@@ -610,6 +613,7 @@ def file_object(download: dict[str, Any], file_id: str, fallback_name: str) -> d
         property_value("TCIA file types", download["file_types"]),
         property_value("TCIA external resources", download["external_resources"]),
         property_value("TCIA download artifact role", download_artifact_role(download)),
+        property_value("TCIA represented payload size", content_size(download)),
         property_value("TCIA access mechanism", access_mechanism(download)),
         property_value("TCIA downstream access system", downstream_access_system(download)),
         property_value("TCIA search system", search_system(download)),
@@ -840,11 +844,13 @@ def source_image_access_object(download: dict[str, Any], access_id: str, fallbac
         "conditionsOfAccess": conditions_of_access(download["access_level"]),
         "usageInfo": policy_usage_info(download["access_level"], download["license_label"], download["license_url"]),
     }
-    add_if_present(item, "contentSize", content_size(download))
+    if download_artifact_role(download) == "data file":
+        add_if_present(item, "contentSize", content_size(download))
     add_if_present(item, "license", license_value)
     add_if_present(item, "dateModified", download["date_updated"])
     additional = [
         property_value("TCIA source image access row", True),
+        property_value("TCIA represented payload size", content_size(download)),
         property_value("TCIA download id", download["id"]),
         property_value("TCIA access level", download["access_level"]),
         property_value("TCIA data types", download["data_types"]),
@@ -983,6 +989,7 @@ def build_document(row: sqlite3.Row, datacite_by_short_title: dict[str, dict[str
         "source_collections": len(source_collections),
         "source_image_access_rows": len(source_downloads),
     }
+    add_metadata_provenance(doc)
     return doc, index_entry
 
 

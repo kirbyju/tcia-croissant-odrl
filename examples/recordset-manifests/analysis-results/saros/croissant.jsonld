@@ -605,7 +605,10 @@
           "name": "External CSV model",
           "value": "The complete record inventory is stored in a route-specific CSV FileObject. Each Croissant Field identifies its CSV column through a DataSource."
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/analysis-result/saros/croissant.jsonld#metadata-generation"
+      }
     },
     {
       "@type": "cr:RecordSet",
@@ -851,14 +854,12 @@
           "name": "External CSV model",
           "value": "The complete record inventory is stored in a route-specific CSV FileObject. Each Croissant Field identifies its CSV column through a DataSource."
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/analysis-result/saros/croissant.jsonld#metadata-generation"
+      }
     }
   ],
-  "prov:wasGeneratedBy": {
-    "@type": "prov:Activity",
-    "name": "TCIA Croissant recordset draft generation",
-    "description": "Deterministic projection from explicit TCIA query-skill artifacts and official manifest inputs."
-  },
   "additionalProperty": [
     {
       "@type": "sc:PropertyValue",
@@ -907,6 +908,103 @@
       "contentSize": "194310 B",
       "sha256": "f4817246e42b1fb83d1bf53860761eace3ca69721808c41695e42dbb282f2b14",
       "license": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  ],
+  "keywords": [
+    "SAROS",
+    "Analysis Result",
+    "Adenocarcinoma",
+    "Corpus Endometrial Carcinoma",
+    "Cutaneous Melanoma",
+    "Ductal Adenocarcinoma",
+    "Head and Neck Carcinomas",
+    "Head and Neck Squamous Cell Carcinoma",
+    "Healthy Controls (non-cancer)",
+    "Kidney Cancer",
+    "Liver Hepatocellular Carcinoma",
+    "Lung Adenocarcinoma",
+    "Lung Cancer",
+    "Lung Squamous Cell Carcinoma",
+    "Melanoma",
+    "Non-small Cell Lung Cancer",
+    "Soft-tissue Sarcoma",
+    "Squamous Cell Carcinoma",
+    "Stomach Adenocarcinoma",
+    "Uterine Corpus Endometrial Carcinoma",
+    "COVID-19 (non-cancer)",
+    "Breast Cancer",
+    "Breast",
+    "Chest",
+    "Limb",
+    "Head-and-Neck",
+    "Kidney",
+    "Liver",
+    "Lung",
+    "Pancreas",
+    "Skin of body",
+    "Stomach",
+    "Uterus",
+    "Human"
+  ],
+  "publisher": {
+    "@type": "sc:Organization",
+    "name": "The Cancer Imaging Archive",
+    "url": "https://www.cancerimagingarchive.net/"
+  },
+  "subjectOf": [
+    {
+      "@id": "https://www.cancerimagingarchive.net/analysis-result/saros/croissant.jsonld",
+      "@type": [
+        "sc:CreativeWork",
+        "prov:Entity"
+      ],
+      "name": "SAROS Croissant metadata",
+      "url": "https://www.cancerimagingarchive.net/analysis-result/saros/croissant.jsonld",
+      "encodingFormat": "application/ld+json",
+      "prov:wasDerivedFrom": [
+        {
+          "@type": [
+            "sc:CreativeWork",
+            "prov:Entity"
+          ],
+          "@id": "https://github.com/kirbyju/tcia-query-skill/releases/tag/tcia-metadata-v2-latest",
+          "name": "TCIA V2 public non-DICOM metadata",
+          "url": "https://github.com/kirbyju/tcia-query-skill/releases/tag/tcia-metadata-v2-latest",
+          "sha256": "fb8e228f0f9261a692572242771db6ecb2072ff7fc9959b9ff87f5376eb8609c"
+        },
+        {
+          "@type": [
+            "sc:CreativeWork",
+            "prov:Entity"
+          ],
+          "@id": "https://www.cancerimagingarchive.net/wp-content/uploads/Segmentation-Info_09-29-2023.csv",
+          "name": "SAROS segmentation information",
+          "url": "https://www.cancerimagingarchive.net/wp-content/uploads/Segmentation-Info_09-29-2023.csv",
+          "sha256": "66d932459fbb9c294fcd1322ae55b7609d302909d342658de4f641acfe96a92e"
+        },
+        {
+          "@id": "https://www.cancerimagingarchive.net/analysis-result/saros/",
+          "@type": "prov:Entity",
+          "description": "TCIA WordPress metadata record represented in the supplied source snapshot; not a fresh page retrieval."
+        }
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/analysis-result/saros/croissant.jsonld#metadata-generation",
+        "@type": "prov:Activity",
+        "name": "TCIA Croissant metadata generation",
+        "description": "Projection of supplied TCIA metadata and inventory sources into Croissant. This activity does not describe acquisition or annotation of the original research data.",
+        "prov:used": [
+          {
+            "@id": "https://github.com/kirbyju/tcia-query-skill/releases/tag/tcia-metadata-v2-latest"
+          },
+          {
+            "@id": "https://www.cancerimagingarchive.net/wp-content/uploads/Segmentation-Info_09-29-2023.csv"
+          },
+          {
+            "@id": "https://www.cancerimagingarchive.net/analysis-result/saros/"
+          }
+        ]
+      }
     }
   ]
 }

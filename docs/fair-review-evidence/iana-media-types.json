@@ -1,0 +1,25 @@
+{
+  "registries": {
+    "https://www.iana.org/assignments/media-types/application.csv": {
+      "sha256": "d4e473cb1a811124d2c83f99e80e29be81fab402e08cbd40a4e04136c8a10588",
+      "retrieved_date": "2026-11-19"
+    },
+    "https://www.iana.org/assignments/media-types/image.csv": {
+      "sha256": "48c2a51460c805a3ff8debcdd01d7b3ac6dbcd031ada36cc55072d8858a107cb",
+      "retrieved_date": "2026-11-19"
+    },
+    "https://www.iana.org/assignments/media-types/text.csv": {
+      "sha256": "09a631d2800d011303a830d32b3c29d43f3c91e787baf99f9e194cd750b22b82",
+      "retrieved_date": "2026-11-19"
+    }
+  },
+  "formats": {
+    "application/json": true,
+    "application/ld+json": true,
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": true,
+    "application/zip": true,
+    "image/tiff": true,
+    "text/csv": true,
+    "text/plain": true
+  }
+}

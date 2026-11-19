@@ -1,0 +1,38 @@
+[
+  {
+    "path": "examples/4d-lung.open-manifest.croissant.jsonld",
+    "result": "pass"
+  },
+  {
+    "path": "examples/breast-cancer-screening-dbt.noncommercial.croissant.jsonld",
+    "result": "pass"
+  },
+  {
+    "path": "examples/cmb-aml.radiology-pathology-external-clinical.croissant.jsonld",
+    "result": "pass"
+  },
+  {
+    "path": "examples/hnscc.mixed-access.croissant.jsonld",
+    "result": "pass"
+  },
+  {
+    "path": "examples/recordset-manifests/analysis-results/saros/croissant.jsonld",
+    "result": "pass"
+  },
+  {
+    "path": "examples/recordset-manifests/collections/4d-lung/croissant.jsonld",
+    "result": "pass"
+  },
+  {
+    "path": "examples/recordset-manifests/collections/cmb-aml/croissant.jsonld",
+    "result": "pass"
+  },
+  {
+    "path": "examples/recordset-manifests/collections/hnscc-mif-mihc-comparison/croissant.jsonld",
+    "result": "pass"
+  },
+  {
+    "path": "examples/saros.analysis-result-nifti-derived.croissant.jsonld",
+    "result": "pass"
+  }
+]

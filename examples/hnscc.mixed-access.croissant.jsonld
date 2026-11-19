@@ -55,7 +55,8 @@
     "subField": "cr:subField",
     "transform": "cr:transform",
     "odrl": "http://www.w3.org/ns/odrl/2/",
-    "sdVersion": "cr:sdVersion"
+    "sdVersion": "cr:sdVersion",
+    "prov": "http://www.w3.org/ns/prov#"
   },
   "@type": "sc:Dataset",
   "@id": "https://doi.org/10.7937/k9/tcia.2020.a8sh-7363",
@@ -168,7 +169,6 @@
           "url": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/"
         }
       ],
-      "contentSize": "154.91 GB",
       "license": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/",
       "dateModified": "2023-11-20",
       "additionalProperty": [
@@ -242,6 +242,11 @@
           "@type": "PropertyValue",
           "name": "TCIA download requirements",
           "value": "Download requires the TCIA Data Retriever"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA represented payload size",
+          "value": "154.91 GB"
         }
       ]
     },
@@ -292,7 +297,6 @@
           "url": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/"
         }
       ],
-      "contentSize": "99.79 GB",
       "license": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/",
       "dateModified": "2023-11-20",
       "additionalProperty": [
@@ -356,6 +360,11 @@
           "@type": "PropertyValue",
           "name": "TCIA download requirements",
           "value": "Download requires the TCIA Data Retriever"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA represented payload size",
+          "value": "99.79 GB"
         }
       ]
     },
@@ -548,7 +557,6 @@
           "url": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/"
         }
       ],
-      "contentSize": "55.11 GB",
       "license": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/",
       "dateModified": "2023-11-20",
       "additionalProperty": [
@@ -608,6 +616,11 @@
           "@type": "PropertyValue",
           "name": "TCIA download requirements",
           "value": "Download requires the TCIA Data Retriever"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA represented payload size",
+          "value": "55.11 GB"
         }
       ]
     },
@@ -874,7 +887,10 @@
           "name": "NIH Controlled Data Access Policy",
           "url": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/"
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/hnscc/croissant.jsonld#metadata-generation"
+      }
     },
     {
       "@type": "cr:RecordSet",
@@ -1051,7 +1067,10 @@
           "name": "NIH Controlled Data Access Policy",
           "url": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/"
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/hnscc/croissant.jsonld#metadata-generation"
+      }
     },
     {
       "@type": "cr:RecordSet",
@@ -1165,7 +1184,10 @@
           "name": "CC BY 3.0",
           "url": "https://creativecommons.org/licenses/by/3.0/"
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/hnscc/croissant.jsonld#metadata-generation"
+      }
     },
     {
       "@type": "cr:RecordSet",
@@ -1271,7 +1293,10 @@
           "name": "CC BY 3.0",
           "url": "https://creativecommons.org/licenses/by/3.0/"
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/hnscc/croissant.jsonld#metadata-generation"
+      }
     },
     {
       "@type": "cr:RecordSet",
@@ -1444,7 +1469,10 @@
           "name": "NIH Controlled Data Access Policy",
           "url": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/"
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/hnscc/croissant.jsonld#metadata-generation"
+      }
     },
     {
       "@type": "cr:RecordSet",
@@ -1554,7 +1582,10 @@
           "name": "CC BY 4.0",
           "url": "https://creativecommons.org/licenses/by/4.0/"
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/hnscc/croissant.jsonld#metadata-generation"
+      }
     }
   ],
   "sameAs": [
@@ -1662,6 +1693,36 @@
       "@type": "PropertyValue",
       "name": "TCIA has TCIA clinical download",
       "value": true
+    }
+  ],
+  "subjectOf": [
+    {
+      "@id": "https://www.cancerimagingarchive.net/collection/hnscc/croissant.jsonld",
+      "@type": [
+        "sc:CreativeWork",
+        "prov:Entity"
+      ],
+      "name": "HNSCC Croissant metadata",
+      "url": "https://www.cancerimagingarchive.net/collection/hnscc/croissant.jsonld",
+      "encodingFormat": "application/ld+json",
+      "prov:wasDerivedFrom": [
+        {
+          "@id": "https://www.cancerimagingarchive.net/collection/hnscc/",
+          "@type": "prov:Entity",
+          "description": "TCIA WordPress metadata record represented in the supplied source snapshot; not a fresh page retrieval."
+        }
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/hnscc/croissant.jsonld#metadata-generation",
+        "@type": "prov:Activity",
+        "name": "TCIA Croissant metadata generation",
+        "description": "Projection of supplied TCIA metadata and inventory sources into Croissant. This activity does not describe acquisition or annotation of the original research data.",
+        "prov:used": [
+          {
+            "@id": "https://www.cancerimagingarchive.net/collection/hnscc/"
+          }
+        ]
+      }
     }
   ]
 }

@@ -19,5 +19,12 @@
     "collections/4d-lung/croissant.jsonld",
     "collections/cmb-aml/croissant.jsonld",
     "collections/hnscc-mif-mihc-comparison/croissant.jsonld"
-  ]
+  ],
+  "metadata_revision_validation": {
+    "date": "2026-11-19",
+    "result": "pass",
+    "validator": "mlcroissant==1.1.0",
+    "documents_checked": 9,
+    "scope": "JSON-LD structure, metadata-only FAIR revision; existing CSVs and source inventories not regenerated. Original validation block above is historical."
+  }
 }

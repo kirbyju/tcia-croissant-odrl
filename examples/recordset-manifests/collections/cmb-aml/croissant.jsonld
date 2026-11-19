@@ -71,7 +71,7 @@
   "conformsTo": "http://mlcommons.org/croissant/1.1",
   "name": "Cancer Moonshot Biobank - Acute Myeloid Leukemia Cancer Collection",
   "alternateName": "CMB-AML",
-  "description": "The Cancer Moonshot Biobank is a National Cancer Institute initiative to support current and future investigations into drug resistance and sensitivity and other NCI-sponsored cancer research initiatives, with an aim of improving researchers' understanding of cancer and how to intervene in cancer initiation and progression. During the course of this study, biospecimens (blood and tissue removed during medical procedures) and associated data will be collected longitudinally from at least 1000 patients across at least 10 cancer types, who are receiving standard of care cancer treatment at multiple NCI Community Oncology Research Program (NCORP) sites. This collection contains de-identified radiology and histopathology imaging procured from subjects in NCI’s Cancer Moonshot Biobank - Acute Myeloid Leukemia Cancer (CMB-AML) cohort. Associated genomic, phenotypic and clinical data will be hosted by The Database of Genotypes and Phenotypes (dbGaP) and other NCI databases. A summary of Cancer Moonshot Biobank imaging efforts can be found on the Cancer Moonshot Biobank Imaging page.",
+  "description": "The Cancer Moonshot Biobank is a National Cancer Institute initiative to support current and future investigations into drug resistance and sensitivity and other NCI-sponsored cancer research initiatives, with an aim of improving researchers' understanding of cancer and how to intervene in cancer initiation and progression. During the course of this study, biospecimens (blood and tissue removed during medical procedures) and associated data will be collected longitudinally from at least 1000 patients across at least 10 cancer types, who are receiving standard of care cancer treatment at multiple NCI Community Oncology Research Program (NCORP) sites. This collection contains de-identified radiology and histopathology imaging procured from subjects in NCI\u2019s Cancer Moonshot Biobank - Acute Myeloid Leukemia Cancer (CMB-AML) cohort. Associated genomic, phenotypic and clinical data will be hosted by The Database of Genotypes and Phenotypes (dbGaP) and other NCI databases. A summary of Cancer Moonshot Biobank imaging efforts can be found on the Cancer Moonshot Biobank Imaging page.",
   "url": "https://www.cancerimagingarchive.net/collection/cmb-aml/",
   "identifier": "https://doi.org/10.7937/PCTE-6M66",
   "license": [
@@ -775,7 +775,10 @@
           "name": "Metadata workbook series count",
           "value": 52
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/cmb-aml/croissant.jsonld#metadata-generation"
+      }
     },
     {
       "@type": "cr:RecordSet",
@@ -1390,7 +1393,10 @@
           "name": "GA4GH authentication boundary",
           "value": "NIH RAS and dbGaP support GA4GH Passport-based interoperability in documented NIH/NCBI workflows. This draft does not claim that the TCIA CTDC route accepts an NIH RAS Passport."
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/cmb-aml/croissant.jsonld#metadata-generation"
+      }
     },
     {
       "@type": "cr:RecordSet",
@@ -1801,14 +1807,12 @@
           "name": "Coverage status",
           "value": "partial inventory; do not infer missing rows or substitute PathDB representations"
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/cmb-aml/croissant.jsonld#metadata-generation"
+      }
     }
   ],
-  "prov:wasGeneratedBy": {
-    "@type": "prov:Activity",
-    "name": "TCIA Croissant recordset draft generation",
-    "description": "Deterministic projection from explicit TCIA query-skill artifacts and official manifest inputs."
-  },
   "additionalProperty": [
     {
       "@type": "sc:PropertyValue",
@@ -1860,6 +1864,105 @@
       "contentSize": "68481 B",
       "sha256": "8bd735b1095e40f7164c3fc5b4ebb216324280d2c2bcb1600e5adeffa5b218f4",
       "license": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  ],
+  "keywords": [
+    "CMB-AML",
+    "Collection",
+    "CT",
+    "MR",
+    "PT",
+    "XA",
+    "Histopathology",
+    "Acute Myeloid Leukemia",
+    "Blood",
+    "Human"
+  ],
+  "publisher": {
+    "@type": "sc:Organization",
+    "name": "The Cancer Imaging Archive",
+    "url": "https://www.cancerimagingarchive.net/"
+  },
+  "subjectOf": [
+    {
+      "@id": "https://www.cancerimagingarchive.net/collection/cmb-aml/croissant.jsonld",
+      "@type": [
+        "sc:CreativeWork",
+        "prov:Entity"
+      ],
+      "name": "CMB-AML Croissant metadata",
+      "url": "https://www.cancerimagingarchive.net/collection/cmb-aml/croissant.jsonld",
+      "encodingFormat": "application/ld+json",
+      "prov:wasDerivedFrom": [
+        {
+          "@type": [
+            "sc:CreativeWork",
+            "prov:Entity"
+          ],
+          "@id": "https://www.cancerimagingarchive.net/wp-content/uploads/CMB-AML_v09_20260702.tcia",
+          "name": "Legacy TCIA Series UID manifest",
+          "url": "https://www.cancerimagingarchive.net/wp-content/uploads/CMB-AML_v09_20260702.tcia",
+          "sha256": "8183a7e48b9cff6fbd2bfef0cb16483ace22ee99612dcb66630cf1b103e1f2e7"
+        },
+        {
+          "@type": [
+            "sc:CreativeWork",
+            "prov:Entity"
+          ],
+          "@id": "https://www.cancerimagingarchive.net/wp-content/uploads/CMB-AML_v09_20260702-nbia-digest.xlsx",
+          "name": "TCIA series metadata workbook",
+          "url": "https://www.cancerimagingarchive.net/wp-content/uploads/CMB-AML_v09_20260702-nbia-digest.xlsx",
+          "sha256": "b0a0784e60913e6c5d994d078899175c78061d451452cbdebc27f30cf8360b36"
+        },
+        {
+          "@type": [
+            "sc:CreativeWork",
+            "prov:Entity"
+          ],
+          "@id": "https://www.cancerimagingarchive.net/wp-content/uploads/CMB-AML_drs_metadata_manifest.csv",
+          "name": "TCIA CMB-AML controlled-access metadata manifest",
+          "url": "https://www.cancerimagingarchive.net/wp-content/uploads/CMB-AML_drs_metadata_manifest.csv",
+          "sha256": "22896c5ef2abc4fab444da3f56ce13b31773a8aa5ed2537638cc0a2496f6bbc3"
+        },
+        {
+          "@type": [
+            "sc:CreativeWork",
+            "prov:Entity"
+          ],
+          "@id": "https://github.com/kirbyju/tcia-query-skill/releases/tag/tcia-metadata-v2-latest",
+          "name": "TCIA V2 public non-DICOM metadata",
+          "url": "https://github.com/kirbyju/tcia-query-skill/releases/tag/tcia-metadata-v2-latest",
+          "sha256": "fb8e228f0f9261a692572242771db6ecb2072ff7fc9959b9ff87f5376eb8609c"
+        },
+        {
+          "@id": "https://www.cancerimagingarchive.net/collection/cmb-aml/",
+          "@type": "prov:Entity",
+          "description": "TCIA WordPress metadata record represented in the supplied source snapshot; not a fresh page retrieval."
+        }
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/cmb-aml/croissant.jsonld#metadata-generation",
+        "@type": "prov:Activity",
+        "name": "TCIA Croissant metadata generation",
+        "description": "Projection of supplied TCIA metadata and inventory sources into Croissant. This activity does not describe acquisition or annotation of the original research data.",
+        "prov:used": [
+          {
+            "@id": "https://www.cancerimagingarchive.net/wp-content/uploads/CMB-AML_v09_20260702.tcia"
+          },
+          {
+            "@id": "https://www.cancerimagingarchive.net/wp-content/uploads/CMB-AML_v09_20260702-nbia-digest.xlsx"
+          },
+          {
+            "@id": "https://www.cancerimagingarchive.net/wp-content/uploads/CMB-AML_drs_metadata_manifest.csv"
+          },
+          {
+            "@id": "https://github.com/kirbyju/tcia-query-skill/releases/tag/tcia-metadata-v2-latest"
+          },
+          {
+            "@id": "https://www.cancerimagingarchive.net/collection/cmb-aml/"
+          }
+        ]
+      }
     }
   ]
 }

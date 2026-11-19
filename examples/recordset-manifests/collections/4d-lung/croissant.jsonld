@@ -71,7 +71,7 @@
   "conformsTo": "http://mlcommons.org/croissant/1.1",
   "name": "Data from 4D Lung Imaging of NSCLC Patients",
   "alternateName": "4D-Lung",
-  "description": "This data collection consists of images acquired during chemoradiotherapy of 20 locally-advanced, non-small cell lung cancer patients. The images include four-dimensional (4D) fan beam (4D-FBCT) and 4D cone beam CT (4D-CBCT). All patients underwent concurrent radiochemotherapy to a total dose of 64.8-70 Gy using daily 1.8 or 2 Gy fractions. 4D-FBCT images were acquired on a 16-slice helical CT scanner (Brilliance Big Bore, Philips Medical Systems, Andover, MA) as respiration-correlated CTs with 10 breathing phases (0 to 90%, phase-based binning) and 3 mm slice thickness. 4D-FBCT images were acquired during simulation, prior to therapy, and used for therapy planning. In 14 of the 20 subjects, 4D-FBCTs were also acquired on the same scanner weekly during therapy. 4D-CBCT images were acquired on a commercial CBCT scanner (On-Board Imager™, Varian Medical Systems, Inc.). An external surrogate (Real-time Position Management, Varian Medical Systems, Inc.) was integrated into the CBCT acquisition system to stamp each CBCT projection with the surrogate respiratory signal through in-house software and hardware tools. Approximately 2500 projections were acquired over a period of 8-10 minutes in half-fan mode with half bow-tie filter. The technique was 125 kVp, 20 mA, and 20 ms in a single 360° slow gantry arc. Using the external surrogate, the CBCT projections were sorted into 10 breathing phases (0 to 90%, phase-based binning) and reconstructed with an in-house FDK reconstruction algorithm. Audio-visual biofeedback was performed for all 4D-FBCT and 4D-CBCT acquisitions in all subjects. A single Radiation Oncologist delineated targets and organs at risk in all 4D-FBCT and a limited number of 4D-CBCT images, on all 10 phases per scan. Seven of the subjects had gold coils implanted as fiducial markers in or near the tumor. The dataset is most fully described in detail in Balik et al. 1 Seven of the subjects had gold coils implanted as fiducial markers in or near the tumor. The implantation procedure and details of marker location are described in detail in Roman et al. 2 References 1 S. Balik et al., “Evaluation of 4-Dimensional Computed Tomography to 4-Dimensional Cone-Beam Computed Tomography Deformable Image Registration for Lung Cancer Adaptive Radiation Therapy.” Int. J. Radiat. Oncol. Biol. Phys. 86 , 372–9 (2013) PMCID: PMC3647023. 2 N.O. Roman, W. Shepherd, N. Mukhopadhyay, G.D. Hugo, and E. Weiss, “Interfractional Positional Variability of Fiducial Markers and Primary Tumors in Locally Advanced Non-Small-Cell Lung Cancer during Audiovisual Biofeedback Radiotherapy.” Int. J. Radiat. Oncol. Biol. Phys. 83 , 1566–72 (2012).",
+  "description": "This data collection consists of images acquired during chemoradiotherapy of 20 locally-advanced, non-small cell lung cancer patients. The images include four-dimensional (4D) fan beam (4D-FBCT) and 4D cone beam CT (4D-CBCT). All patients underwent concurrent radiochemotherapy to a total dose of 64.8-70 Gy using daily 1.8 or 2 Gy fractions. 4D-FBCT images were acquired on a 16-slice helical CT scanner (Brilliance Big Bore, Philips Medical Systems, Andover, MA) as respiration-correlated CTs with 10 breathing phases (0 to 90%, phase-based binning) and 3 mm slice thickness. 4D-FBCT images were acquired during simulation, prior to therapy, and used for therapy planning. In 14 of the 20 subjects, 4D-FBCTs were also acquired on the same scanner weekly during therapy. 4D-CBCT images were acquired on a commercial CBCT scanner (On-Board Imager\u2122, Varian Medical Systems, Inc.). An external surrogate (Real-time Position Management, Varian Medical Systems, Inc.) was integrated into the CBCT acquisition system to stamp each CBCT projection with the surrogate respiratory signal through in-house software and hardware tools. Approximately 2500 projections were acquired over a period of 8-10 minutes in half-fan mode with half bow-tie filter. The technique was 125 kVp, 20 mA, and 20 ms in a single 360\u00b0 slow gantry arc. Using the external surrogate, the CBCT projections were sorted into 10 breathing phases (0 to 90%, phase-based binning) and reconstructed with an in-house FDK reconstruction algorithm. Audio-visual biofeedback was performed for all 4D-FBCT and 4D-CBCT acquisitions in all subjects. A single Radiation Oncologist delineated targets and organs at risk in all 4D-FBCT and a limited number of 4D-CBCT images, on all 10 phases per scan. Seven of the subjects had gold coils implanted as fiducial markers in or near the tumor. The dataset is most fully described in detail in Balik et al. 1 Seven of the subjects had gold coils implanted as fiducial markers in or near the tumor. The implantation procedure and details of marker location are described in detail in Roman et al. 2 References 1 S. Balik et al., \u201cEvaluation of 4-Dimensional Computed Tomography to 4-Dimensional Cone-Beam Computed Tomography Deformable Image Registration for Lung Cancer Adaptive Radiation Therapy.\u201d Int. J. Radiat. Oncol. Biol. Phys. 86 , 372\u20139 (2013) PMCID: PMC3647023. 2 N.O. Roman, W. Shepherd, N. Mukhopadhyay, G.D. Hugo, and E. Weiss, \u201cInterfractional Positional Variability of Fiducial Markers and Primary Tumors in Locally Advanced Non-Small-Cell Lung Cancer during Audiovisual Biofeedback Radiotherapy.\u201d Int. J. Radiat. Oncol. Biol. Phys. 83 , 1566\u201372 (2012).",
   "url": "https://www.cancerimagingarchive.net/collection/4d-lung/",
   "identifier": "https://doi.org/10.7937/K9/TCIA.2016.ELN8YGLE",
   "license": [
@@ -655,14 +655,12 @@
           "name": "Metadata workbook series count",
           "value": 6690
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/4d-lung/croissant.jsonld#metadata-generation"
+      }
     }
   ],
-  "prov:wasGeneratedBy": {
-    "@type": "prov:Activity",
-    "name": "TCIA Croissant recordset draft generation",
-    "description": "Deterministic projection from explicit TCIA query-skill artifacts and official manifest inputs."
-  },
   "additionalProperty": [
     {
       "@type": "sc:PropertyValue",
@@ -692,6 +690,76 @@
       "contentSize": "3902809 B",
       "sha256": "92bd48196ee654641560fe8a6d7c242268893a5fcb1fdb5b81b1467b9cfa4444",
       "license": "https://creativecommons.org/licenses/by/3.0/"
+    }
+  ],
+  "keywords": [
+    "4D-Lung",
+    "Collection",
+    "CT",
+    "RTSTRUCT",
+    "Non-small Cell Lung Cancer",
+    "Lung",
+    "Human"
+  ],
+  "publisher": {
+    "@type": "sc:Organization",
+    "name": "The Cancer Imaging Archive",
+    "url": "https://www.cancerimagingarchive.net/"
+  },
+  "subjectOf": [
+    {
+      "@id": "https://www.cancerimagingarchive.net/collection/4d-lung/croissant.jsonld",
+      "@type": [
+        "sc:CreativeWork",
+        "prov:Entity"
+      ],
+      "name": "4D-Lung Croissant metadata",
+      "url": "https://www.cancerimagingarchive.net/collection/4d-lung/croissant.jsonld",
+      "encodingFormat": "application/ld+json",
+      "prov:wasDerivedFrom": [
+        {
+          "@type": [
+            "sc:CreativeWork",
+            "prov:Entity"
+          ],
+          "@id": "https://www.cancerimagingarchive.net/wp-content/uploads/doiJNLP-Y71kLpdQ.tcia",
+          "name": "Legacy TCIA Series UID manifest",
+          "url": "https://www.cancerimagingarchive.net/wp-content/uploads/doiJNLP-Y71kLpdQ.tcia",
+          "sha256": "52473706a6c41e6ebeffc9d23873f3d7d070cb6a16f8d5fd51da7dc0b7cdf8db"
+        },
+        {
+          "@type": [
+            "sc:CreativeWork",
+            "prov:Entity"
+          ],
+          "@id": "https://www.cancerimagingarchive.net/wp-content/uploads/doiJNLP-Y71kLpdQ-nbia-digest.xlsx",
+          "name": "TCIA series metadata workbook",
+          "url": "https://www.cancerimagingarchive.net/wp-content/uploads/doiJNLP-Y71kLpdQ-nbia-digest.xlsx",
+          "sha256": "8df3c4059f979d181bbaa87480c17d243669eaf750dc7a8a572727206dd2bed9"
+        },
+        {
+          "@id": "https://www.cancerimagingarchive.net/collection/4d-lung/",
+          "@type": "prov:Entity",
+          "description": "TCIA WordPress metadata record represented in the supplied source snapshot; not a fresh page retrieval."
+        }
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/4d-lung/croissant.jsonld#metadata-generation",
+        "@type": "prov:Activity",
+        "name": "TCIA Croissant metadata generation",
+        "description": "Projection of supplied TCIA metadata and inventory sources into Croissant. This activity does not describe acquisition or annotation of the original research data.",
+        "prov:used": [
+          {
+            "@id": "https://www.cancerimagingarchive.net/wp-content/uploads/doiJNLP-Y71kLpdQ.tcia"
+          },
+          {
+            "@id": "https://www.cancerimagingarchive.net/wp-content/uploads/doiJNLP-Y71kLpdQ-nbia-digest.xlsx"
+          },
+          {
+            "@id": "https://www.cancerimagingarchive.net/collection/4d-lung/"
+          }
+        ]
+      }
     }
   ]
 }

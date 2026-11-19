@@ -1,0 +1,56 @@
+[
+  {
+    "path": "examples/4d-lung.open-manifest.croissant.jsonld",
+    "before_sha256": "7353043079b18eaba87af947e19129d74a9a3411a820172a490f1333434f6e11",
+    "after_sha256": "4c46769efd3ae5b23a718ec6a1c8e3ffda83479be8a5776b013b19d9893a1bda",
+    "keyword_source": "existing keywords retained"
+  },
+  {
+    "path": "examples/breast-cancer-screening-dbt.noncommercial.croissant.jsonld",
+    "before_sha256": "53282b6f59d7ffb9d6ca390897dca5c18b1561460d4c958c99b92daafb71de3f",
+    "after_sha256": "3fcbd4e6684ffc6027ae129f564bc6cc96c6fbb9ab476e9b7996a37bf5fa84cc",
+    "keyword_source": "existing keywords retained"
+  },
+  {
+    "path": "examples/cmb-aml.radiology-pathology-external-clinical.croissant.jsonld",
+    "before_sha256": "4e917f38a3bfb2e0df76d0b4e01358487252d09c97932712ddc33f9e9ea1141c",
+    "after_sha256": "23a7e5241dcc3e0cc94f344c1659c344691a9664319d46b6055bff0a34f1bc86",
+    "keyword_source": "existing keywords retained"
+  },
+  {
+    "path": "examples/hnscc.mixed-access.croissant.jsonld",
+    "before_sha256": "cf94ee1d9e04a5e6cff74877e065741cf29d6a38251c10e2c7d9abbcc4b6ac45",
+    "after_sha256": "18186172bd2fbfea32768bc1008f1b852cfd6b34565aa444dcb5e905df6326b3",
+    "keyword_source": "existing keywords retained"
+  },
+  {
+    "path": "examples/recordset-manifests/analysis-results/saros/croissant.jsonld",
+    "before_sha256": "38041bb2a803e648258e46317c1cb09a2497bfcdea630a8425c2f51ff65af36b",
+    "after_sha256": "d424b27df84bcf9cc7621325abfc8116914c75fea67287c6b9b00eed84cfe38d",
+    "keyword_source": "examples/saros.analysis-result-nifti-derived.croissant.jsonld#keywords (same DOI)"
+  },
+  {
+    "path": "examples/recordset-manifests/collections/4d-lung/croissant.jsonld",
+    "before_sha256": "a8297ab02bb3780fd69fc328c7a41e51ee89e45aeb826e7fae69725082657fa2",
+    "after_sha256": "e4cdda57e13417eef5b41a682c7eb15b6c6936cd1f71958440fe25e7dd730355",
+    "keyword_source": "examples/4d-lung.open-manifest.croissant.jsonld#keywords (same DOI)"
+  },
+  {
+    "path": "examples/recordset-manifests/collections/cmb-aml/croissant.jsonld",
+    "before_sha256": "e8e7d13fbfc9f555bdf87cc76e30c835295e68ff11d5315045eef765c9d11aaf",
+    "after_sha256": "3ad31a8e64531cf2bccdbd682a85feaa6129f855b28f4f5d62fba17e2baa5d10",
+    "keyword_source": "examples/cmb-aml.radiology-pathology-external-clinical.croissant.jsonld#keywords (same DOI)"
+  },
+  {
+    "path": "examples/recordset-manifests/collections/hnscc-mif-mihc-comparison/croissant.jsonld",
+    "before_sha256": "baeda20893595f37d770d0dc7b9952fbdfd856933797c545b09db504f7570ae3",
+    "after_sha256": "716f28aea10e323fbd332e4090a091189f79dff3e88a6e555f6e864e9bad41db",
+    "keyword_source": "existing PathDB inventory CancerType/CancerLocation/species labels; not ontology mappings"
+  },
+  {
+    "path": "examples/saros.analysis-result-nifti-derived.croissant.jsonld",
+    "before_sha256": "55945631397a69815d3db84bec65601a9023160f2d5e2d544d523f33f0a33c7d",
+    "after_sha256": "555dd8b1ce69fc69aa190807e8df4935b686797e6f1760b6a8f6f89c4969c87e",
+    "keyword_source": "existing keywords retained"
+  }
+]

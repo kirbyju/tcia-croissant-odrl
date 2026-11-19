@@ -55,7 +55,8 @@
     "subField": "cr:subField",
     "transform": "cr:transform",
     "odrl": "http://www.w3.org/ns/odrl/2/",
-    "sdVersion": "cr:sdVersion"
+    "sdVersion": "cr:sdVersion",
+    "prov": "http://www.w3.org/ns/prov#"
   },
   "@type": "sc:Dataset",
   "@id": "https://doi.org/10.25737/SZ96-ZG60",
@@ -386,7 +387,10 @@
           "name": "CC BY 4.0",
           "url": "https://creativecommons.org/licenses/by/4.0/"
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/analysis-result/saros/croissant.jsonld#metadata-generation"
+      }
     },
     {
       "@type": "cr:RecordSet",
@@ -490,7 +494,10 @@
           "name": "CC BY 4.0",
           "url": "https://creativecommons.org/licenses/by/4.0/"
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/analysis-result/saros/croissant.jsonld#metadata-generation"
+      }
     }
   ],
   "isBasedOn": [
@@ -989,7 +996,6 @@
           "url": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/"
         }
       ],
-      "contentSize": "29.75 GB",
       "license": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/",
       "dateModified": "2023-11-20",
       "additionalProperty": [
@@ -1066,6 +1072,11 @@
           "@type": "PropertyValue",
           "name": "TCIA images",
           "value": "56400"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA represented payload size",
+          "value": "29.75 GB"
         }
       ]
     },
@@ -1075,8 +1086,7 @@
       "name": "SAROS_SourceImages_CCby30_9-12-2023.tcia",
       "contentUrl": "https://www.cancerimagingarchive.net/wp-content/uploads/SAROS_SourceImages_CCby30_9-12-2023.tcia",
       "encodingFormat": [
-        "text/plain",
-        "application/vnd.tcia.manifest"
+        "text/plain"
       ],
       "conditionsOfAccess": "Open-access TCIA data. Users must follow the listed license and TCIA Data Usage Policies and Restrictions.",
       "usageInfo": [
@@ -1093,7 +1103,6 @@
           "url": "https://creativecommons.org/licenses/by/3.0/"
         }
       ],
-      "contentSize": "66.88 GB",
       "license": "https://creativecommons.org/licenses/by/3.0/",
       "dateModified": "2023-11-20",
       "additionalProperty": [
@@ -1170,6 +1179,11 @@
           "@type": "PropertyValue",
           "name": "TCIA images",
           "value": "126796"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA represented payload size",
+          "value": "66.88 GB"
         }
       ]
     },
@@ -1179,8 +1193,7 @@
       "name": "SAROS_SourceImages_CCbyNC30_9-12-2023.tcia",
       "contentUrl": "https://www.cancerimagingarchive.net/wp-content/uploads/SAROS_SourceImages_CCbyNC30_9-12-2023.tcia",
       "encodingFormat": [
-        "text/plain",
-        "application/vnd.tcia.manifest"
+        "text/plain"
       ],
       "conditionsOfAccess": "Open-access TCIA data with a noncommercial-use license condition. Users must follow the listed license and TCIA Data Usage Policies and Restrictions.",
       "usageInfo": [
@@ -1220,7 +1233,6 @@
           "url": "https://creativecommons.org/licenses/by-nc/3.0/"
         }
       ],
-      "contentSize": "4.63 GB",
       "license": "https://creativecommons.org/licenses/by-nc/3.0/",
       "dateModified": "2023-11-20",
       "additionalProperty": [
@@ -1297,6 +1309,11 @@
           "@type": "PropertyValue",
           "name": "TCIA images",
           "value": "8807"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA represented payload size",
+          "value": "4.63 GB"
         }
       ]
     },
@@ -1306,8 +1323,7 @@
       "name": "SAROS_SourceImages_CCby40_9-12-2023.tcia",
       "contentUrl": "https://www.cancerimagingarchive.net/wp-content/uploads/SAROS_SourceImages_CCby40_9-12-2023.tcia",
       "encodingFormat": [
-        "text/plain",
-        "application/vnd.tcia.manifest"
+        "text/plain"
       ],
       "conditionsOfAccess": "Open-access TCIA data. Users must follow the listed license and TCIA Data Usage Policies and Restrictions.",
       "usageInfo": [
@@ -1324,7 +1340,6 @@
           "url": "https://creativecommons.org/licenses/by/4.0/"
         }
       ],
-      "contentSize": "1.4 GB",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "dateModified": "2023-11-20",
       "additionalProperty": [
@@ -1401,6 +1416,11 @@
           "@type": "PropertyValue",
           "name": "TCIA images",
           "value": "2654"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA represented payload size",
+          "value": "1.4 GB"
         }
       ]
     }
@@ -1543,6 +1563,36 @@
       "@type": "PropertyValue",
       "name": "TCIA has TCIA clinical download",
       "value": false
+    }
+  ],
+  "subjectOf": [
+    {
+      "@id": "https://www.cancerimagingarchive.net/analysis-result/saros/croissant.jsonld",
+      "@type": [
+        "sc:CreativeWork",
+        "prov:Entity"
+      ],
+      "name": "SAROS Croissant metadata",
+      "url": "https://www.cancerimagingarchive.net/analysis-result/saros/croissant.jsonld",
+      "encodingFormat": "application/ld+json",
+      "prov:wasDerivedFrom": [
+        {
+          "@id": "https://www.cancerimagingarchive.net/analysis-result/saros/",
+          "@type": "prov:Entity",
+          "description": "TCIA WordPress metadata record represented in the supplied source snapshot; not a fresh page retrieval."
+        }
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/analysis-result/saros/croissant.jsonld#metadata-generation",
+        "@type": "prov:Activity",
+        "name": "TCIA Croissant metadata generation",
+        "description": "Projection of supplied TCIA metadata and inventory sources into Croissant. This activity does not describe acquisition or annotation of the original research data.",
+        "prov:used": [
+          {
+            "@id": "https://www.cancerimagingarchive.net/analysis-result/saros/"
+          }
+        ]
+      }
     }
   ]
 }

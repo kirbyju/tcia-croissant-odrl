@@ -55,7 +55,8 @@
     "subField": "cr:subField",
     "transform": "cr:transform",
     "odrl": "http://www.w3.org/ns/odrl/2/",
-    "sdVersion": "cr:sdVersion"
+    "sdVersion": "cr:sdVersion",
+    "prov": "http://www.w3.org/ns/prov#"
   },
   "@type": "sc:Dataset",
   "@id": "https://doi.org/10.7937/E4WT-CD02",
@@ -144,8 +145,7 @@
       "name": "BSC-DBT-Train-manifest.tcia",
       "contentUrl": "https://www.cancerimagingarchive.net/wp-content/uploads/BSC-DBT-Train-manifest.tcia",
       "encodingFormat": [
-        "text/plain",
-        "application/vnd.tcia.manifest"
+        "text/plain"
       ],
       "conditionsOfAccess": "Open-access TCIA data with a noncommercial-use license condition. Users must follow the listed license and TCIA Data Usage Policies and Restrictions.",
       "usageInfo": [
@@ -185,7 +185,6 @@
           "url": "https://creativecommons.org/licenses/by-nc/4.0/"
         }
       ],
-      "contentSize": "1.42 TB",
       "license": "https://creativecommons.org/licenses/by-nc/4.0/",
       "dateModified": "2023-11-20",
       "additionalProperty": [
@@ -244,6 +243,11 @@
           "@type": "PropertyValue",
           "name": "TCIA download requirements",
           "value": "Download requires the TCIA Data Retriever"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA represented payload size",
+          "value": "1.42 TB"
         }
       ]
     },
@@ -532,8 +536,7 @@
       "name": "BSC-DBT-Validation-manifest.tcia",
       "contentUrl": "https://www.cancerimagingarchive.net/wp-content/uploads/BSC-DBT-Validation-manifest.tcia",
       "encodingFormat": [
-        "text/plain",
-        "application/vnd.tcia.manifest"
+        "text/plain"
       ],
       "conditionsOfAccess": "Open-access TCIA data with a noncommercial-use license condition. Users must follow the listed license and TCIA Data Usage Policies and Restrictions.",
       "usageInfo": [
@@ -573,7 +576,6 @@
           "url": "https://creativecommons.org/licenses/by-nc/4.0/"
         }
       ],
-      "contentSize": "84.71 GB",
       "license": "https://creativecommons.org/licenses/by-nc/4.0/",
       "dateModified": "2023-11-20",
       "additionalProperty": [
@@ -642,6 +644,11 @@
           "@type": "PropertyValue",
           "name": "TCIA download requirements",
           "value": "Download requires the TCIA Data Retriever"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA represented payload size",
+          "value": "84.71 GB"
         }
       ]
     },
@@ -930,8 +937,7 @@
       "name": "BSC-DBT-Test-manifest.tcia",
       "contentUrl": "https://www.cancerimagingarchive.net/wp-content/uploads/BSC-DBT-Test-manifest.tcia",
       "encodingFormat": [
-        "text/plain",
-        "application/vnd.tcia.manifest"
+        "text/plain"
       ],
       "conditionsOfAccess": "Open-access TCIA data with a noncommercial-use license condition. Users must follow the listed license and TCIA Data Usage Policies and Restrictions.",
       "usageInfo": [
@@ -971,7 +977,6 @@
           "url": "https://creativecommons.org/licenses/by-nc/4.0/"
         }
       ],
-      "contentSize": "135.14 GB",
       "license": "https://creativecommons.org/licenses/by-nc/4.0/",
       "dateModified": "2023-11-20",
       "additionalProperty": [
@@ -1040,6 +1045,11 @@
           "@type": "PropertyValue",
           "name": "TCIA download requirements",
           "value": "Download requires the TCIA Data Retriever"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA represented payload size",
+          "value": "135.14 GB"
         }
       ]
     },
@@ -1595,7 +1605,10 @@
           "name": "CC BY-NC 4.0",
           "url": "https://creativecommons.org/licenses/by-nc/4.0/"
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/breast-cancer-screening-dbt/croissant.jsonld#metadata-generation"
+      }
     },
     {
       "@type": "cr:RecordSet",
@@ -1736,7 +1749,10 @@
           "name": "CC BY-NC 4.0",
           "url": "https://creativecommons.org/licenses/by-nc/4.0/"
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/breast-cancer-screening-dbt/croissant.jsonld#metadata-generation"
+      }
     },
     {
       "@type": "cr:RecordSet",
@@ -1877,7 +1893,10 @@
           "name": "CC BY-NC 4.0",
           "url": "https://creativecommons.org/licenses/by-nc/4.0/"
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/breast-cancer-screening-dbt/croissant.jsonld#metadata-generation"
+      }
     },
     {
       "@type": "cr:RecordSet",
@@ -2018,7 +2037,10 @@
           "name": "CC BY-NC 4.0",
           "url": "https://creativecommons.org/licenses/by-nc/4.0/"
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/breast-cancer-screening-dbt/croissant.jsonld#metadata-generation"
+      }
     },
     {
       "@type": "cr:RecordSet",
@@ -2201,7 +2223,10 @@
           "name": "CC BY-NC 4.0",
           "url": "https://creativecommons.org/licenses/by-nc/4.0/"
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/breast-cancer-screening-dbt/croissant.jsonld#metadata-generation"
+      }
     },
     {
       "@type": "cr:RecordSet",
@@ -2342,7 +2367,10 @@
           "name": "CC BY-NC 4.0",
           "url": "https://creativecommons.org/licenses/by-nc/4.0/"
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/breast-cancer-screening-dbt/croissant.jsonld#metadata-generation"
+      }
     },
     {
       "@type": "cr:RecordSet",
@@ -2483,7 +2511,10 @@
           "name": "CC BY-NC 4.0",
           "url": "https://creativecommons.org/licenses/by-nc/4.0/"
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/breast-cancer-screening-dbt/croissant.jsonld#metadata-generation"
+      }
     },
     {
       "@type": "cr:RecordSet",
@@ -2624,7 +2655,10 @@
           "name": "CC BY-NC 4.0",
           "url": "https://creativecommons.org/licenses/by-nc/4.0/"
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/breast-cancer-screening-dbt/croissant.jsonld#metadata-generation"
+      }
     },
     {
       "@type": "cr:RecordSet",
@@ -2807,7 +2841,10 @@
           "name": "CC BY-NC 4.0",
           "url": "https://creativecommons.org/licenses/by-nc/4.0/"
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/breast-cancer-screening-dbt/croissant.jsonld#metadata-generation"
+      }
     },
     {
       "@type": "cr:RecordSet",
@@ -2948,7 +2985,10 @@
           "name": "CC BY-NC 4.0",
           "url": "https://creativecommons.org/licenses/by-nc/4.0/"
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/breast-cancer-screening-dbt/croissant.jsonld#metadata-generation"
+      }
     },
     {
       "@type": "cr:RecordSet",
@@ -3090,7 +3130,10 @@
           "name": "CC BY-NC 4.0",
           "url": "https://creativecommons.org/licenses/by-nc/4.0/"
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/breast-cancer-screening-dbt/croissant.jsonld#metadata-generation"
+      }
     },
     {
       "@type": "cr:RecordSet",
@@ -3231,7 +3274,10 @@
           "name": "CC BY-NC 4.0",
           "url": "https://creativecommons.org/licenses/by-nc/4.0/"
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/breast-cancer-screening-dbt/croissant.jsonld#metadata-generation"
+      }
     },
     {
       "@type": "cr:RecordSet",
@@ -3370,7 +3416,10 @@
           "name": "CC BY-NC 4.0",
           "url": "https://creativecommons.org/licenses/by-nc/4.0/"
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/breast-cancer-screening-dbt/croissant.jsonld#metadata-generation"
+      }
     }
   ],
   "sameAs": [
@@ -3472,6 +3521,36 @@
       "@type": "PropertyValue",
       "name": "TCIA has TCIA clinical download",
       "value": true
+    }
+  ],
+  "subjectOf": [
+    {
+      "@id": "https://www.cancerimagingarchive.net/collection/breast-cancer-screening-dbt/croissant.jsonld",
+      "@type": [
+        "sc:CreativeWork",
+        "prov:Entity"
+      ],
+      "name": "Breast-Cancer-Screening-DBT Croissant metadata",
+      "url": "https://www.cancerimagingarchive.net/collection/breast-cancer-screening-dbt/croissant.jsonld",
+      "encodingFormat": "application/ld+json",
+      "prov:wasDerivedFrom": [
+        {
+          "@id": "https://www.cancerimagingarchive.net/collection/breast-cancer-screening-dbt/",
+          "@type": "prov:Entity",
+          "description": "TCIA WordPress metadata record represented in the supplied source snapshot; not a fresh page retrieval."
+        }
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/breast-cancer-screening-dbt/croissant.jsonld#metadata-generation",
+        "@type": "prov:Activity",
+        "name": "TCIA Croissant metadata generation",
+        "description": "Projection of supplied TCIA metadata and inventory sources into Croissant. This activity does not describe acquisition or annotation of the original research data.",
+        "prov:used": [
+          {
+            "@id": "https://www.cancerimagingarchive.net/collection/breast-cancer-screening-dbt/"
+          }
+        ]
+      }
     }
   ]
 }

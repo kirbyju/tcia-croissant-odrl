@@ -55,7 +55,8 @@
     "subField": "cr:subField",
     "transform": "cr:transform",
     "odrl": "http://www.w3.org/ns/odrl/2/",
-    "sdVersion": "cr:sdVersion"
+    "sdVersion": "cr:sdVersion",
+    "prov": "http://www.w3.org/ns/prov#"
   },
   "@type": "sc:Dataset",
   "@id": "https://doi.org/10.7937/PCTE-6M66",
@@ -125,8 +126,7 @@
       "name": "CMB-AML_v06_20250509.tcia",
       "contentUrl": "https://www.cancerimagingarchive.net/wp-content/uploads/CMB-AML_v06_20250509.tcia",
       "encodingFormat": [
-        "text/plain",
-        "application/vnd.tcia.manifest"
+        "text/plain"
       ],
       "conditionsOfAccess": "Open-access TCIA data. Users must follow the listed license and TCIA Data Usage Policies and Restrictions.",
       "usageInfo": [
@@ -144,7 +144,6 @@
         }
       ],
       "description": "New Release, release 6",
-      "contentSize": "1.57 GB",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "dateModified": "2025-05-09",
       "additionalProperty": [
@@ -215,6 +214,11 @@
           "@type": "PropertyValue",
           "name": "TCIA download requirements",
           "value": "Download requires the TCIA Data Retriever"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA represented payload size",
+          "value": "1.57 GB"
         }
       ]
     },
@@ -266,7 +270,6 @@
         }
       ],
       "description": "rerelease through CTDC",
-      "contentSize": "1.49 GB",
       "license": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/",
       "dateModified": "2026-05-29",
       "additionalProperty": [
@@ -332,6 +335,11 @@
           "@type": "PropertyValue",
           "name": "TCIA download requirements",
           "value": "Download requires the TCIA Data Retriever"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA represented payload size",
+          "value": "1.49 GB"
         }
       ]
     },
@@ -359,7 +367,6 @@
           "url": "https://creativecommons.org/licenses/by/4.0/"
         }
       ],
-      "contentSize": "217 GB",
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "dateModified": "2025-10-10",
       "additionalProperty": [
@@ -425,6 +432,11 @@
           "@type": "PropertyValue",
           "name": "TCIA download requirements",
           "value": "Download requires the IBM-Aspera-Connect plugin"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "TCIA represented payload size",
+          "value": "217 GB"
         }
       ]
     }
@@ -590,7 +602,10 @@
           "name": "CC BY 4.0",
           "url": "https://creativecommons.org/licenses/by/4.0/"
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/cmb-aml/croissant.jsonld#metadata-generation"
+      }
     },
     {
       "@type": "cr:RecordSet",
@@ -770,7 +785,10 @@
           "name": "NIH Controlled Data Access Policy",
           "url": "https://www.cancerimagingarchive.net/nih-controlled-data-access-policy/"
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/cmb-aml/croissant.jsonld#metadata-generation"
+      }
     },
     {
       "@type": "cr:RecordSet",
@@ -914,7 +932,10 @@
           "name": "CC BY 4.0",
           "url": "https://creativecommons.org/licenses/by/4.0/"
         }
-      ]
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/cmb-aml/croissant.jsonld#metadata-generation"
+      }
     }
   ],
   "sameAs": [
@@ -1011,6 +1032,36 @@
       "@type": "PropertyValue",
       "name": "TCIA has TCIA clinical download",
       "value": false
+    }
+  ],
+  "subjectOf": [
+    {
+      "@id": "https://www.cancerimagingarchive.net/collection/cmb-aml/croissant.jsonld",
+      "@type": [
+        "sc:CreativeWork",
+        "prov:Entity"
+      ],
+      "name": "CMB-AML Croissant metadata",
+      "url": "https://www.cancerimagingarchive.net/collection/cmb-aml/croissant.jsonld",
+      "encodingFormat": "application/ld+json",
+      "prov:wasDerivedFrom": [
+        {
+          "@id": "https://www.cancerimagingarchive.net/collection/cmb-aml/",
+          "@type": "prov:Entity",
+          "description": "TCIA WordPress metadata record represented in the supplied source snapshot; not a fresh page retrieval."
+        }
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://www.cancerimagingarchive.net/collection/cmb-aml/croissant.jsonld#metadata-generation",
+        "@type": "prov:Activity",
+        "name": "TCIA Croissant metadata generation",
+        "description": "Projection of supplied TCIA metadata and inventory sources into Croissant. This activity does not describe acquisition or annotation of the original research data.",
+        "prov:used": [
+          {
+            "@id": "https://www.cancerimagingarchive.net/collection/cmb-aml/"
+          }
+        ]
+      }
     }
   ]
 }

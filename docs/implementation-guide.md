@@ -1,6 +1,6 @@
 # TCIA Croissant implementation guide
 
-Updated: November 12, 2026.
+Updated: November 19, 2026.
 
 This is the current implementation guidance for the TCIA development team.
 Use it for implementation priorities and rollout requirements. The other design
@@ -123,10 +123,7 @@ additive example, not a replacement for the full object:
     "@id": "https://www.cancerimagingarchive.net/collection/cmb-aml/croissant.jsonld",
     "name": "CMB-AML Croissant metadata",
     "url": "https://www.cancerimagingarchive.net/collection/cmb-aml/croissant.jsonld",
-    "encodingFormat": "application/ld+json",
-    "about": {
-      "@id": "https://doi.org/10.7937/PCTE-6M66"
-    }
+    "encodingFormat": "application/ld+json"
   }
 }
 ```
@@ -143,9 +140,25 @@ Add this discovery link to the HTML `<head>`:
 ```html
 <link
   rel="alternate"
-  type='application/ld+json; profile="http://mlcommons.org/croissant/1.1"'
+  type="application/ld+json"
   href="https://www.cancerimagingarchive.net/collection/cmb-aml/croissant.jsonld">
 ```
+
+Also expose an explicit metadata relationship, using the same URL:
+
+```html
+<link
+  rel="describedby"
+  type="application/ld+json"
+  href="https://www.cancerimagingarchive.net/collection/cmb-aml/croissant.jsonld">
+```
+
+The endpoint's HTTP `Content-Type` must be `application/ld+json`. Keeping the
+HTML link's `type` parameter-free supports harvesters that compare media types
+literally. The JSON-LD `conformsTo` value identifies Croissant 1.1. An equivalent
+HTTP `Link` header with `rel="describedby"` can support non-HTML clients.
+`subjectOf` and a visible download button alone are not discovery acceptance
+tests: verify that the assessor actually follows the advertised link.
 
 Advertise the link only after the endpoint is valid and available. These URLs
 are proposed. The live CMB-AML page could not be retrieved during preparation,
@@ -155,6 +168,60 @@ Generate accurate per-download access and license metadata for mixed-access
 datasets. Distinguish manifest URLs, payload formats, and search/viewer URLs.
 The [website integration note](website-integration-recommendations.md) contains
 additional Schema.org cleanup recommendations.
+
+### FAIR metadata requirements shared by WordPress and Croissant
+
+The supplied [FAIR feedback](https://docs.google.com/document/d/1LEzXiZO_XMIkQpnEIsPyVmyk1KBs3Dn9A-VvF9V1h9s/edit)
+reports 84% overall and five incomplete metrics. It supplies one example DOI,
+but not the second DOI, raw assessment JSON, assessment date, or F-UJI and
+metrics versions. Treat its reasons as hypotheses to verify, not a reproducible
+baseline or a guarantee of a particular improvement.
+
+Generate the core Dataset properties in the page and Croissant from shared
+source facts. Keep the page-level Dataset complete even when the richer
+RecordSets and provenance live in linked Croissant. Preserve authors and
+publication dates already present; TCIA as publisher does not establish TCIA
+as the scientific dataset's creator. Missing creators in the recordset pilot
+must be sourced from the dataset citation or curated DOI metadata before release.
+The older summary exporter currently hardcodes TCIA as `creator`; replace that
+fallback with reviewed dataset authors rather than treating its passing F2
+result as evidence of correct attribution. Its use of DataCite record `created`
+as `datePublished` also needs replacement with the actual dataset release date;
+DOI registration and dataset publication can occur on different dates.
+
+| Feedback | Implementation requirement | Validation and limits |
+| --- | --- | --- |
+| F2: missing keywords | Populate `keywords` from existing disease, anatomical location, species and Data Category labels; retain useful existing keywords. Include these in both page and Croissant Dataset objects. | Assert nonempty keywords and check F-UJI's harvested core metadata. Plain keywords improve discovery but do not become ontology identifiers. |
+| I2: registered vocabulary | Declare `prov: http://www.w3.org/ns/prov#` and use real PROV-O statements on metadata documents and generated inventories. Existing ODRL statements may also be recognized. | Expand the JSON-LD and verify actual predicates/types, then inspect the registered namespaces reported by the pinned assessor. A declaration alone is insufficient evidence of meaningful vocabulary use. |
+| R1: content descriptors | `encodingFormat` and `contentSize` describe the artifact at that object's `contentUrl`. A CSV inventory is `text/csv`; a plain-text `.tcia` manifest is `text/plain`; a ZIP is `application/zip`. Describe DICOM payloads as `application/dicom` only on DICOM objects. | Generated CSVs have exact byte counts and hashes. Use source-supported file sizes for direct artifacts, preserving source precision; verify bytes where possible. A manifest's represented payload size belongs in a separately named property. Leave unknown artifact sizes absent and report the gap. Search, viewer and transfer-service pages are not payload files. |
+| R1.2: provenance | Separate scientific data provenance from metadata-generation provenance. Use `prov:wasDerivedFrom` for evidenced inventory sources and `prov:wasGeneratedBy` for the metadata/inventory generation activity. Add scientific acquisition, annotation or derivation activities only when supported by reviewed descriptions. | The current examples scope exporter provenance to the linked metadata document and generated RecordSets. Passing a namespace-based provenance check does not establish complete scientific provenance. |
+| R1.3: disciplinary profile | Retain Croissant 1.1 `conformsTo` and use actual Croissant terms. Current F-UJI includes Croissant in its disciplinary standards registry. | Test recognition with the pinned version. Bioschemas is optional additional conformance work, not an automatic fix. Declare its versioned Dataset profile only after checking required properties, expected types and cardinalities. |
+
+Do not emit invented media types such as `application/vnd.tcia.manifest` or
+`application/vnd.nifti`. For an unregistered format, use a documented format URL
+where supported, or an accurately identified generic media type, retaining the
+specific format label separately. Schema.org permits format URLs as well as MIME
+strings; F-UJI's recognition can differ. See the [IANA registry](https://www.iana.org/assignments/media-types/media-types.xhtml)
+and [Schema.org encodingFormat](https://schema.org/encodingFormat).
+
+The shared prototype helper [`fair_metadata.py`](../scripts/fair_metadata.py)
+adds a `subjectOf` metadata `CreativeWork` identified by the proposed Croissant
+URL, linked from the Dataset DOI by `subjectOf`. Its `prov:wasDerivedFrom` identifies
+the supplied source records/inventories; and its `prov:wasGeneratedBy` describes
+the exporter. RecordSets reference that activity. In production, also record
+immutable source snapshot/version identifiers and generation timestamps. These
+proposed metadata URLs are not assertions of live endpoints.
+
+Do not copy the feedback's example LOINC/MeSH mapping without checking it.
+`variableMeasured` should describe actual measured variables with accurate
+identifiers; disease topics can instead use reviewed `about`/`DefinedTerm`
+metadata. Neither arbitrary ontology URLs nor generic modality labels establish
+what was measured. No clinical ontology mappings are introduced by this proposal.
+
+The proposed example revision preserves historical source evidence and CSVs.
+It corrects exporter provenance and manifest-size semantics and adds missing
+recordset keywords and publisher metadata. It is not a fresh inventory export.
+See the [review and test results](fair-feedback-review.md).
 
 ## 5. Add the download interface
 
@@ -183,6 +250,24 @@ Acceptance checks:
 - Validate documents with `mlcroissant` and page markup with Schema.org tooling.
   Check CSV availability, hashes, keys, field mappings, and reconciliation with
   authoritative source inventories.
+- Run a pinned F-UJI version and metrics configuration before and after rollout
+  using the same DOI inputs, settings and evidence window. Keep raw results,
+  harvested metadata, namespace and standards outputs, logs, timestamps and
+  assessment input URLs. Record external-service failures separately from
+  metadata defects. Confirm that existing passing metrics do not regress.
+- Test both the WordPress Dataset block and the discoverable linked document.
+  Inspect which subject F-UJI selects as its main entity: current collector
+  heuristics can select a large RecordSet instead of the Dataset. The current
+  recordset pilot also lacks dataset creators. These gaps must not be hidden
+  by an aggregate score or by removing useful RecordSet metadata.
+- Verify nonempty harvested keywords, recognized PROV-O/other used vocabularies,
+  formal provenance recognition, artifact-specific type/size descriptors and
+  recognition of Croissant as a community standard. Validate the semantics as
+  well as the score. Unknown sizes and unverified profiles must remain explicit.
+- Use [`assess_fuji_metadata.py`](../scripts/assess_fuji_metadata.py) for a quick,
+  offline collector/evaluator comparison. It deliberately performs no DOI
+  resolution, page discovery, repository lookups or data downloads and cannot
+  establish an overall FAIR score. Full DOI/page assessment remains a release gate.
 - Test the intended released TDR version against public DICOM, controlled DRS,
   direct files, unsupported Aspera handoffs, and Analysis Result outputs.
   Verify payload retrieval rather than merely saving inventory CSVs. Use small,

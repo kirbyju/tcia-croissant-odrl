@@ -1,0 +1,13 @@
+test_exporter_activity_describes_metadata_and_recordsets (test_fair_metadata.FairMetadataTest.test_exporter_activity_describes_metadata_and_recordsets) ... ok
+test_keyword_mapping_accepts_snapshot_json_without_inventing_terms (test_fair_metadata.FairMetadataTest.test_keyword_mapping_accepts_snapshot_json_without_inventing_terms) ... ok
+test_manifest_sizes_are_not_payload_sizes (test_fair_metadata.FairMetadataTest.test_manifest_sizes_are_not_payload_sizes) ... ok
+test_provenance_mapping_is_idempotent_and_preserves_other_links (test_fair_metadata.FairMetadataTest.test_provenance_mapping_is_idempotent_and_preserves_other_links) ... ok
+test_controlled_csv_contains_identifiers_not_credentials (test_recordset_examples.RecordsetExamplesTest.test_controlled_csv_contains_identifiers_not_credentials) ... ok
+test_croissant_fields_are_sourced_from_csv_fileobjects (test_recordset_examples.RecordsetExamplesTest.test_croissant_fields_are_sourced_from_csv_fileobjects) ... ok
+test_csv_inventories_have_expected_counts_and_unique_keys (test_recordset_examples.RecordsetExamplesTest.test_csv_inventories_have_expected_counts_and_unique_keys) ... ok
+test_generation_summary_matches_all_generated_files (test_recordset_examples.RecordsetExamplesTest.test_generation_summary_matches_all_generated_files) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.132s
+
+OK

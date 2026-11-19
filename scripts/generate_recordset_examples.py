@@ -23,6 +23,8 @@ from typing import Any, Iterable
 
 import pandas as pd
 
+from fair_metadata import add_metadata_provenance, dataset_keywords
+
 
 CROISSANT_11 = "http://mlcommons.org/croissant/1.1"
 RAI_10 = "http://mlcommons.org/croissant/RAI/1.0"
@@ -560,6 +562,8 @@ def dataset_document(
         "conformsTo": CROISSANT_11,
         "name": str(dataset["title"]),
         "alternateName": str(dataset["short_title"]),
+        "keywords": dataset_keywords(dataset),
+        "publisher": {"@type": "sc:Organization", "name": "The Cancer Imaging Archive", "url": "https://www.cancerimagingarchive.net/"},
         "description": str(dataset.get("summary") or dataset.get("abstract") or dataset["title"]),
         "url": str(dataset["link"]),
         "identifier": dataset_identifier(dataset),
@@ -575,11 +579,6 @@ def dataset_document(
         ),
         "usageInfo": usage_info("controlled" if "controlled" in access_levels else "open", ""),
         "recordSet": [make_recordset(draft, root) for draft in drafts],
-        "prov:wasGeneratedBy": {
-            "@type": "prov:Activity",
-            "name": "TCIA Croissant recordset draft generation",
-            "description": "Deterministic projection from explicit TCIA query-skill artifacts and official manifest inputs.",
-        },
         "additionalProperty": [
             property_value("Document role", "dataset Croissant with external recordset CSV files"),
             property_value("Recordset count", len(drafts)),
@@ -614,6 +613,7 @@ def dataset_document(
                 distributions.append(distribution)
     if distributions:
         doc["distribution"] = distributions
+    add_metadata_provenance(doc)
     return doc
 
 

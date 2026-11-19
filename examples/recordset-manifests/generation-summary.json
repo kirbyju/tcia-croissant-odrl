@@ -50,7 +50,7 @@
       "retrieval_key": "SeriesInstanceUID"
     },
     "collections/4d-lung/croissant.jsonld": {
-      "sha256": "a8297ab02bb3780fd69fc328c7a41e51ee89e45aeb826e7fae69725082657fa2",
+      "sha256": "e4cdda57e13417eef5b41a682c7eb15b6c6936cd1f71958440fe25e7dd730355",
       "recordsets": 1,
       "records": 6690,
       "role": "dataset_croissant"
@@ -64,7 +64,7 @@
       "retrieval_key": "imageUrl"
     },
     "collections/hnscc-mif-mihc-comparison/croissant.jsonld": {
-      "sha256": "baeda20893595f37d770d0dc7b9952fbdfd856933797c545b09db504f7570ae3",
+      "sha256": "716f28aea10e323fbd332e4090a091189f79dff3e88a6e555f6e864e9bad41db",
       "recordsets": 1,
       "records": 3212,
       "role": "dataset_croissant"
@@ -94,7 +94,7 @@
       "retrieval_key": "asset_id"
     },
     "collections/cmb-aml/croissant.jsonld": {
-      "sha256": "e8e7d13fbfc9f555bdf87cc76e30c835295e68ff11d5315045eef765c9d11aaf",
+      "sha256": "3ad31a8e64531cf2bccdbd682a85feaa6129f855b28f4f5d62fba17e2baa5d10",
       "recordsets": 3,
       "records": 179,
       "role": "dataset_croissant"
@@ -116,10 +116,15 @@
       "retrieval_key": "id"
     },
     "analysis-results/saros/croissant.jsonld": {
-      "sha256": "38041bb2a803e648258e46317c1cb09a2497bfcdea630a8425c2f51ff65af36b",
+      "sha256": "d424b27df84bcf9cc7621325abfc8116914c75fea67287c6b9b00eed84cfe38d",
       "recordsets": 2,
       "records": 2609,
       "role": "dataset_croissant"
     }
+  },
+  "metadata_revision": {
+    "date": "2026-11-19",
+    "base_commit": "a3d5b317812ecb7e7b35d4ccbfd5db79a8b6d7f3",
+    "note": "Metadata-only FAIR review revision; original source snapshot, generation time, inventory CSVs and their hashes unchanged. No full inventory regeneration or live source refresh."
   }
 }
